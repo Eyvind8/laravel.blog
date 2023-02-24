@@ -24,3 +24,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 ## Install other package
 RUN apt-get install -yq mc vim htop
+RUN apt-get install -y default-mysql-client
+
