@@ -1,18 +1,10 @@
 <?php
 
-namespace App\Models\Jokes;
+namespace App\Models\Basis;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Jokes
- * @package App\Models\Jokes
- *
- * @property int $id
- * @property string $content
- * @property int $likes
- */
-class Jokes extends Model
+class Items extends Model
 {
     /**
      * @var string
@@ -22,7 +14,7 @@ class Jokes extends Model
     /**
      * @var string
      */
-    protected $table = 'jokes';
+    protected $table = 'items';
 
     /**
      * @var bool
