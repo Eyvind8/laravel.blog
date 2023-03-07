@@ -142,24 +142,23 @@ class Filter
      */
     public function __construct(array $data)
     {
-        $this->limit = isset($data['limit']) &&
-        filter_var($data['limit'], FILTER_VALIDATE_INT) &&
-        $data['limit'] > 0 ? (int)$data['limit'] : self::DEFAULT_LIMIT;
+        $this->limit = isset($data['limit']) && filter_var($data['limit'], FILTER_VALIDATE_INT) && $data['limit'] > 0
+            ? (int)$data['limit']
+            : self::DEFAULT_LIMIT;
 
-        $this->offset = isset($data['offset']) &&
-        filter_var($data['offset'], FILTER_VALIDATE_INT) !== false &&
-        $data['offset'] >= 0 ? (int)$data['offset'] : self::DEFAULT_OFFSET;
+        $this->offset = isset($data['offset']) && filter_var($data['offset'], FILTER_VALIDATE_INT) !== false && $data['offset'] >= 0
+            ? (int)$data['offset']
+            : self::DEFAULT_OFFSET;
 
-        $this->sortField = isset($data['sortField']) &&
-        filter_var(
-            $data['sortField'],
-            FILTER_VALIDATE_REGEXP,
+        $this->sortField = isset($data['sortField']) && filter_var($data['sortField'], FILTER_VALIDATE_REGEXP,
             ['options' => ['regexp' => '/[A-Za-z0-9_]{1,}/']]
-        ) ? $data['sortField'] : null;
+        )
+            ? $data['sortField']
+            : null;
 
-        $this->sortDirection = isset($data['sortDirection']) &&
-        \in_array($data['sortDirection'], [self::SORT_DIRECTION_ASC, self::SORT_DIRECTION_DESC])
-            ? $data['sortDirection'] : self::SORT_DIRECTION_DESC;
+        $this->sortDirection = isset($data['sortDirection']) && \in_array($data['sortDirection'], [self::SORT_DIRECTION_ASC, self::SORT_DIRECTION_DESC])
+            ? $data['sortDirection']
+            : self::SORT_DIRECTION_DESC;
 
         if (isset($data['filter']) && \is_array($data['filter']) && $data['filter']) {
             $this->filter = $data['filter'];
