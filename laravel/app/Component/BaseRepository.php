@@ -3,6 +3,7 @@
 namespace App\Components;
 
 use App\Component\Pagination\Filter;
+use App\Component\Pagination\Pagination;
 use App\Component\Pagination\QueryBuilder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -115,6 +116,15 @@ abstract class BaseRepository
     public function filter(Filter $filter): QueryBuilder
     {
         return new QueryBuilder($this->query(), $filter);
+    }
+
+    /**
+     * @param Filter $filter
+     * @return Pagination
+     */
+    public function list(Filter $filter): Pagination
+    {
+        return $this->filter($filter)->pagination();
     }
 
     /**
