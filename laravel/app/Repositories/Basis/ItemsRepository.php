@@ -14,24 +14,4 @@ final class ItemsRepository extends BaseRepository
     {
         return Items::class;
     }
-
-    /**
-     * @param int $id
-     * @return Items|null
-     */
-    public function getById(int $id): ?Items
-    {
-        return $this->query()
-            ->where('id', '=', $id)
-            ->first();
-    }
-
-    /**
-     * @param array $attributes
-     * @return Items
-     */
-    public function create(array $attributes = []): Items
-    {
-        return $this->query()->create($attributes);
-    }
 }

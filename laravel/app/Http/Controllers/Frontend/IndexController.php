@@ -16,10 +16,13 @@ class IndexController
          * echo "Connection to server sucessfully <br>";
          * $redis->set("tutorial-name", "Redis tutorial");
          * echo "Stored string in redis:: " . $redis->get("tutorial-name") . '<br>';
-         *
-         * $item = $itemsRepository->getById(1);
-         * dd($item->content);
          */
+        $item = $itemsRepository->get(1);
+        dump($item->content);
+
+        $items = $itemsRepository->all();
+        dd($items);
+
 
         return view('items/index');
     }
