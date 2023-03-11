@@ -18,14 +18,15 @@ class IndexController
          * $redis->set("tutorial-name", "Redis tutorial");
          * echo "Stored string in redis:: " . $redis->get("tutorial-name") . '<br>';
          */
+
         //$item = $itemsRepository->get(1);
         //dump($item->content);
 
         //$items = $itemsRepository->all();
         //dd($items);
 
-        $items = $itemsRepository->list(new Filter($request->all()));
-        dd($items);
+        //$items = $itemsRepository->list(new Filter($request->all()));
+        //dd($items);
 
         return view('items/index');
     }
