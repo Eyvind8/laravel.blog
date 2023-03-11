@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,17 +17,16 @@
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-reset.css') }}" rel="stylesheet">
     <!--external css-->
-    <link href="{{ asset('assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}"/>
-    <link href="{{ asset('assets/bxslider/jquery.bxslider.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/bxslider/jquery.bxslider.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
 
-
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet"/>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -44,7 +42,8 @@
         <div class="navbar-header">
             <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse"
                     type="button"><span class="icon-bar"></span> <span class="icon-bar"></span>
-                <span class="icon-bar"></span></button> <a class="navbar-brand" href="index.html">A
+                <span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="index.html">A
                 <span>cme</span></a>
         </div>
 
@@ -367,7 +366,11 @@
                             </a>
                         </h1>
                         <p>
-                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis
+                            omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis
+                            iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
                         </p>
                         <a href="blog-detail.html" class="btn btn-primary">
                             Continue Reading
@@ -460,7 +463,11 @@
                             </a>
                         </h1>
                         <p>
-                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis
+                            omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis
+                            iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
                         </p>
                         <a href="blog-detail.html" class="btn btn-primary">
                             Continue Reading
@@ -553,7 +560,11 @@
                             </a>
                         </h1>
                         <p>
-                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis
+                            omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis
+                            iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
                         </p>
                         <a href="blog-detail.html" class="btn btn-primary">
                             Continue Reading
@@ -646,7 +657,11 @@
                             </a>
                         </h1>
                         <p>
-                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis
+                            omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis
+                            iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
                         </p>
                         <a href="blog-detail.html" class="btn btn-primary">
                             Continue Reading
@@ -739,7 +754,11 @@
                             </a>
                         </h1>
                         <p>
-                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis
+                            omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis
+                            iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
                         </p>
                         <a href="blog-detail.html" class="btn btn-primary">
                             Continue Reading
@@ -1186,14 +1205,22 @@
         <div class="row">
             <div class="col-lg-6 col-sm-6 pull-right">
                 <ul class="social-link-footer list-unstyled">
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="#"><i class="fa fa-skype"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="#"><i class="fa fa-github"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".8s"><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="#"><i
+                                class="fa fa-facebook"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="#"><i
+                                class="fa fa-google-plus"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="#"><i
+                                class="fa fa-dribbble"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="#"><i
+                                class="fa fa-linkedin"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="#"><i
+                                class="fa fa-twitter"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="#"><i
+                                class="fa fa-skype"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="#"><i
+                                class="fa fa-github"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".8s"><a href="#"><i
+                                class="fa fa-youtube"></i></a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -1207,30 +1234,20 @@
 <!--small footer end-->
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{{ asset('js/jquery.js') }}">
-</script>
-<script src="{{ asset('js/bootstrap.min.js') }}">
-</script>
-<script type="text/javascript" src="{{ asset('js/hover-dropdown.js') }}">
-</script>
-<script defer src="{{ asset('js/jquery.flexslider.js') }}">
-</script>
-<script type="text/javascript" src="{{ asset('assets/bxslider/jquery.bxslider.js') }}">
-</script>
-
-<script src="{{ asset('js/jquery.easing.min.js') }}">
-</script>
-<script src="{{ asset('js/link-hover.js') }}">
-</script>
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/hover-dropdown.js') }}"></script>
+<script defer src="{{ asset('js/jquery.flexslider.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/bxslider/jquery.bxslider.js') }}"></script>
+<script src="{{ asset('js/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('js/link-hover.js') }}"></script>
 
 
 <!--common script for all pages-->
-<script src="{{ asset('js/common-scripts.js') }}">
-</script>
+<script src="{{ asset('js/common-scripts.js') }}"></script>
 
 
-<script src="{{ asset('js/wow.min.js') }}">
-</script>
+<script src="{{ asset('js/wow.min.js') }}"></script>
 <script>
       wow = new WOW(
         {
@@ -1240,7 +1257,9 @@
         }
       )
         wow.init();
-    </script>
+
+
+</script>
 
 </body>
 </html>

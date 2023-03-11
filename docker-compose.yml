@@ -7,7 +7,7 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./:/var/www/html
     ports:
-      - "7880:80"
+      - "88:80"
     logging:
       driver: "json-file"
       options:
