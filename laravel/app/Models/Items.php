@@ -2,11 +2,23 @@
 
 namespace App\Models;
 
+use App\Models\Interfaces\ItemsInterface;
+use App\Models\Scopes\ItemsActiveScope;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
-
-class Items extends Model
+/**
+ * App\Models\Items
+ *
+ * @property int $id
+ * @property int $status
+ * @property string|null $title
+ * @property string $content
+ * @property int $likes
+ * @property string $created
+ * @property string $update
+ * @property int $type
+ */
+class Items extends Model implements ItemsInterface
 {
     /**
      * @var string
@@ -27,8 +39,13 @@ class Items extends Model
      * @var array
      */
     protected $fillable = [
+        'status',
+        'title',
         'content',
         'likes',
+        'created',
+        'updated',
+        'type'
     ];
 
     /**
@@ -38,8 +55,12 @@ class Items extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('active', function (Builder $builder) {
-            $builder->where('status', 1);
-        });
+        static::addGlobalScope(new ItemsActiveScope());
+
+        /**
+         * static::addGlobalScope('active', function (Builder $builder) {
+         * $builder->where('status', 1);
+         * });
+         */
     }
 }
