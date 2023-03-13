@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Component\Pagination\Filter;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\FormRequest;
-use App\Repositories\Basis\ItemsRepository;
-use Illuminate\Support\Facades\Redis;
+use App\Repositories\ItemsRepository;
 
-class IndexController
+class IndexController extends Controller
 {
     public function index(FormRequest $request, ItemsRepository $itemsRepository)
     {
@@ -25,9 +25,8 @@ class IndexController
         //$items = $itemsRepository->all();
         //dd($items);
 
-        //$items = $itemsRepository->list(new Filter($request->all()));
-        //dd($items);
+        $items = $itemsRepository->list(new Filter($request->all()))->toArray();
 
-        return view('items/index');
+        return view('items/index')->with('items', $items);
     }
 }
