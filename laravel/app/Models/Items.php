@@ -55,7 +55,7 @@ class Items extends Model implements ItemsInterface
     {
         parent::boot();
 
-        static::addGlobalScope(new ItemsActiveScope());
+        //static::addGlobalScope(new ItemsActiveScope());
 
         /**
          * static::addGlobalScope('active', function (Builder $builder) {

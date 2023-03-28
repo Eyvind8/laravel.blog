@@ -118,7 +118,11 @@ class Pagination implements \JsonSerializable, \Iterator
      */
     public function toArray(): array
     {
-        return ['list' => $this->current, 'total' => $this->total];
+        return [
+            'total_pages' => (int)ceil($this->total / $this->limit),
+            'current_page' => (int)ceil($this->offset / $this->limit),
+            'list' => $this->current,
+        ];
     }
 
     /**

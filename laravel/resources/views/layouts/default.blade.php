@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @include('includes.head')
+    @include('layouts.head')
 </head>
 
 <body>
 <!--header start-->
 <header class="head-section">
-    @include('includes.header')
+    @include('layouts.header')
 </header>
 <!--header end-->
 
@@ -24,6 +24,6 @@
 <!--container end-->
 
 <!--footer -->
-@include('includes.footer')
+@include('layouts.footer')
 </body>
 </html>

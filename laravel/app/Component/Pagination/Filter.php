@@ -120,6 +120,7 @@ class Filter
     /**
      * Filter constructor.
      * @param array $data = [
+     *      'page' => '(int)',
      *      'limit' => '!(int)',
      *      'offset' => '!(int)',
      *      'sortField' => '!(string)',
@@ -146,9 +147,13 @@ class Filter
             ? (int)$data['limit']
             : self::DEFAULT_LIMIT;
 
-        $this->offset = isset($data['offset']) && filter_var($data['offset'], FILTER_VALIDATE_INT) !== false && $data['offset'] >= 0
-            ? (int)$data['offset']
-            : self::DEFAULT_OFFSET;
+        if (!empty($data['page']) && $page = (int)$data['page']) {
+            $this->offset = ($page - 1) * $this->limit;
+        } else {
+            $this->offset = isset($data['offset']) && filter_var($data['offset'], FILTER_VALIDATE_INT) !== false && $data['offset'] >= 0
+                ? (int)$data['offset']
+                : self::DEFAULT_OFFSET;
+        }
 
         $this->sortField = isset($data['sortField']) && filter_var($data['sortField'], FILTER_VALIDATE_REGEXP,
             ['options' => ['regexp' => '/[A-Za-z0-9_]{1,}/']]

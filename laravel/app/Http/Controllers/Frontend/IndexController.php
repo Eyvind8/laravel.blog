@@ -26,6 +26,7 @@ class IndexController extends Controller
         //dd($items);
 
         $items = $itemsRepository->list(new Filter($request->all()))->toArray();
+        //dd($items);
 
         return view('items/index')->with('items', $items);
     }

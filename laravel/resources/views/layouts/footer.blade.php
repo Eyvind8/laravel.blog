@@ -203,6 +203,8 @@
 <!--common script for all pages-->
 <script src="{{ asset('js/common-scripts.js') }}"></script>
 
+<!--paginator-->
+<script src="{{ asset('js/pagination.js') }}"></script>
 
 <script src="{{ asset('js/wow.min.js') }}"></script>
 <script>
