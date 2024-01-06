@@ -73,19 +73,30 @@
                             </div>
                         </div>
                         <div class="col-lg-10 col-sm-10">
-                            <?php /** ?>
-                            <h1>
-                                <a href="blog-detail.html">
-                                    Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.
-                                </a>
-                            </h1>
-                            <?php */ ?>
-                            <h3>
+                                <?php /** ?>
+                             * <h1>
+                             * <a href="blog-detail.html">
+                             * Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.
+                             * </a>
+                             * </h1>
+                             * <?php */ ?>
+                            <h3 style="white-space: pre-line; margin-top:-15px; margin-bottom: 15px;">
                                 {{ $item['content'] }}
                             </h3>
-{{--                            <a href="blog-detail.html" class="btn btn-primary">--}}
-{{--                                Continue Reading--}}
-{{--                            </a>--}}
+                            <ul class="tag">
+                                @foreach ($item->getTags() as $tag)
+                                    <li>
+                                        <a href="/?tag={{ $tag->id }}">
+                                            <i class="fa fa-tags pr-5">
+                                            </i>
+                                            {{ $tag->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            {{--                            <a href="blog-detail.html" class="btn btn-primary">--}}
+                            {{--                                Continue Reading--}}
+                            {{--                            </a>--}}
                         </div>
                     </div>
                 @endforeach

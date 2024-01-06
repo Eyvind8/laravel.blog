@@ -36,7 +36,12 @@ class IndexController extends Controller
 
 
         $items = $itemsRepository->list(new Filter($request->all()))->toArray();
-        //dd($items);
+
+        foreach ($items['list'] as $item) {
+            /** @var Items $tags */
+            $tags = $itemsRepository->getTagsForItem($item->id)->toArray();
+            $item->setTags($tags);
+        }
 
         return view('items/index')->with('items', $items);
     }

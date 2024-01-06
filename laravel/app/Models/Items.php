@@ -49,6 +49,28 @@ class Items extends Model implements ItemsInterface
     ];
 
     /**
+     * @var array
+     */
+    private array $tags;
+
+    /**
+     * @param array $tags
+     * @return void
+     */
+    public function setTags(array $tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTags(): array
+    {
+        return $this->tags;
+    }
+
+    /**
      *
      */
     protected static function boot()
