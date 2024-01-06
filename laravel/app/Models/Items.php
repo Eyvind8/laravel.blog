@@ -28,7 +28,7 @@ class Items extends Model implements ItemsInterface
     /**
      * @var string
      */
-    protected $table = 'items';
+    protected $table = 'item';
 
     /**
      * @var bool

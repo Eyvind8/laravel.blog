@@ -83,9 +83,9 @@
                             <h3>
                                 {{ $item['content'] }}
                             </h3>
-                            <a href="blog-detail.html" class="btn btn-primary">
-                                Continue Reading
-                            </a>
+{{--                            <a href="blog-detail.html" class="btn btn-primary">--}}
+{{--                                Continue Reading--}}
+{{--                            </a>--}}
                         </div>
                     </div>
                 @endforeach

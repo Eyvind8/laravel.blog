@@ -3,15 +3,15 @@
 namespace App\Repositories;
 
 use App\Component\BaseRepository;
-use App\Models\Items;
+use App\Models\ItemTag;
 
-final class ItemsRepository extends BaseRepository
+final class TagRepository extends BaseRepository
 {
     /**
      * @return string
      */
     public function model(): string
     {
-        return Items::class;
+        return ItemTag::class;
     }
 }

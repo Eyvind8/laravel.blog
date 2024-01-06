@@ -7,10 +7,15 @@ use App\Component\Pagination\Filter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FormRequest;
 use App\Repositories\ItemsRepository;
+use App\Repositories\TagRepository;
 
 class IndexController extends Controller
 {
-    public function index(FormRequest $request, ItemsRepository $itemsRepository)
+    public function index(
+        FormRequest $request,
+        ItemsRepository $itemsRepository,
+        TagRepository $tagRepository
+    )
     {
         /**
          * $redis = Redis::connection()->client();
@@ -24,6 +29,10 @@ class IndexController extends Controller
 
         //$items = $itemsRepository->all();
         //dd($items);
+
+        //$tags = $tagRepository->all();
+        //dd($tags[0]->name);
+
 
         $items = $itemsRepository->list(new Filter($request->all()))->toArray();
         //dd($items);
