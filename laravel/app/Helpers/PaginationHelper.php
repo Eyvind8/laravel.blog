@@ -7,6 +7,10 @@
  */
 function buildPagination(int $totalPages, int $currentPage)
 {
+    if ($totalPages < 2) {
+        return '';
+    }
+
     $pagination = '<ul class="pagination">';
 
     // Добавляем ссылку на предыдущую страницу

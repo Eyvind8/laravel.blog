@@ -93,6 +93,11 @@ class Filter
     public const FIELD_TYPE_DATE = 'date';
 
     /**
+     * @var int|null
+     */
+    private $tagId;
+
+    /**
      * @var int
      */
     private $limit;
@@ -170,6 +175,8 @@ class Filter
         } elseif (isset($data['filter']) && \is_string($data['filter'])) {
             $this->filter = \json_decode($data['filter'], true) ?: null;
         }
+
+        $this->tagId = $data['tag'] ?? null;
     }
 
     /**
@@ -202,6 +209,14 @@ class Filter
     public function getSortField(): ?string
     {
         return $this->sortField;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTagId(): ?int
+    {
+        return $this->tagId;
     }
 
     /**
