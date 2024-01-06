@@ -211,9 +211,6 @@ class Filter
         return $this->sortField;
     }
 
-    /**
-     * @return int|null
-     */
     public function getTagId(): ?int
     {
         return $this->tagId;

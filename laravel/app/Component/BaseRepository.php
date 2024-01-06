@@ -7,7 +7,6 @@ use App\Component\Pagination\Pagination;
 use App\Component\Pagination\QueryBuilder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class BaseRepository
@@ -116,20 +115,7 @@ abstract class BaseRepository
      */
     public function filter(Filter $filter): QueryBuilder
     {
-//        return new QueryBuilder($this->query(), $filter);
-        $query = $this->query();
-
-        if ($filter->getTagId() !== null) {
-            $tagId = $filter->getTagId();
-            $query->whereExists(function ($query) use ($tagId) {
-                $query->select(DB::raw(1))
-                    ->from('item_tag')
-                    ->whereColumn('item_tag.item_id', 'item.id')
-                    ->where('item_tag.tag_id', $tagId);
-            });
-        }
-
-        return new QueryBuilder($query, $filter);
+        return new QueryBuilder($this->query(), $filter);
     }
 
     /**
