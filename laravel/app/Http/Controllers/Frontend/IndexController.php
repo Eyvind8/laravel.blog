@@ -6,15 +6,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Component\Pagination\Filter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FormRequest;
+use App\Models\Items;
 use App\Repositories\ItemsRepository;
 use App\Repositories\TagRepository;
 
 class IndexController extends Controller
 {
     public function index(
-        FormRequest $request,
+        FormRequest     $request,
         ItemsRepository $itemsRepository,
-        TagRepository $tagRepository
+        TagRepository   $tagRepository
     )
     {
         /**

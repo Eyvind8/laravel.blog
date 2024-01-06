@@ -2,21 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Interfaces\TagsInterface;
-use App\Models\Scopes\TagsActiveScope;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\ItemTag
+ * App\Models\Tag
  *
  * @property int $id
- * @property int $parent_id
- * @property string $name
- * @property int $active
- * @property string $created
- * @property string $update
+ * @property int $item_id
+ * @property int $tag_id
  */
-class ItemTag extends Model implements TagsInterface
+class ItemTag extends Model
 {
     /**
      * @var string
@@ -26,29 +21,30 @@ class ItemTag extends Model implements TagsInterface
     /**
      * @var string
      */
-    protected $table = 'tag';
+    protected $table = 'item_tag'; // Указываем имя таблицы, если оно отличается от соглашения Eloquent
 
     /**
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
-     * @var array
+     * @var string[]
      */
     protected $fillable = [
-        'parent_id',
-        'name',
-        'active',
+        'id',
+        'item_id',
+        'tag_id'
     ];
 
     /**
-     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected static function boot()
+    public function item()
     {
-        parent::boot();
+        return $this->belongsTo(Items::class, 'item_id', 'id');
+    }
 
-        static::addGlobalScope(new TagsActiveScope());
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class, 'tag_id', 'id');
     }
 }

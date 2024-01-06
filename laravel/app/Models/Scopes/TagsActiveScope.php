@@ -2,7 +2,7 @@
 
 namespace App\Models\Scopes;
 
-use App\Models\ItemTag;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -18,6 +18,6 @@ class TagsActiveScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('active', '=', ItemTag::STATUS_ACTIVE);
+        $builder->where('active', '=', Tag::STATUS_ACTIVE);
     }
 }

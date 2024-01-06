@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Component\BaseRepository;
-use App\Models\ItemTag;
+use App\Models\Tag;
 
 final class TagRepository extends BaseRepository
 {
@@ -12,6 +12,6 @@ final class TagRepository extends BaseRepository
      */
     public function model(): string
     {
-        return ItemTag::class;
+        return Tag::class;
     }
 }
