@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="img/favicon.png">
 
 <title>
-    JOKES ua
+    JOKESUA com
 </title>
 
 <!-- Bootstrap core CSS -->

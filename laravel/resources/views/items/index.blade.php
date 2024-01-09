@@ -18,12 +18,12 @@
                             </div>
                             <ul class="list-unstyled">
                                 <li style="padding-bottom: 1px">
-                                    <em style="color: #444e67;">
+                                    <em>
                                         209 View
                                     </em>
                                 </li>
-                                <li>
-                                    <em style="color: #444e67">
+                                <li class="hidden">
+                                    <em>
                                         23 Share
                                     </em>
                                 </li>
