@@ -10,60 +10,26 @@
                         <div class="col-lg-2 col-sm-2 text-right">
                             <div class="date-wrap">
                                   <span class="date">
-                                    11
+                                      <?= date_parse($item['created'])['day'] ?>
                                   </span>
                                 <span class="month">
-                                    January
-                                  </span>
-                            </div>
-                            <div class="author">
-                                By
-                                <a href="#">
-                                    Admin
-                                </a>
+                                      <?= getUkrainianMonth($item['created']) ?>
+                                </span>
                             </div>
                             <ul class="list-unstyled">
-                                <li>
-                                    <a href="javascript:;">
-                                        <em>
-                                            travel
-                                        </em>
-                                    </a>
+                                <li style="padding-bottom: 1px">
+                                    <em style="color: #444e67;">
+                                        209 View
+                                    </em>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
-                                        <em>
-                                            tour
-                                        </em>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <em>
-                                            recreation
-                                        </em>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <em>
-                                            tourism
-                                        </em>
-                                    </a>
+                                    <em style="color: #444e67">
+                                        23 Share
+                                    </em>
                                 </li>
                             </ul>
-                            <div class="st-view">
+                            <div class="st-view hidden" style="margin-top: 0px">
                                 <ul class="list-unstyled">
-                                    <li>
-                                        <a href="javascript:;">
-                                            209 View
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            23 Share
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="javascript:;">
                                             15 comments
@@ -80,15 +46,15 @@
                              * </a>
                              * </h1>
                              * <?php */ ?>
-                            <h3 style="white-space: pre-line; margin-top:-15px; margin-bottom: 15px;">
-                                {{ $item['content'] }}
+                            <h3 style="white-space: pre-line; margin-top:-15px; margin-bottom: 15px; color: #444e67; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">
+                                {{ Str::ucfirst($item['content']) }}
                             </h3>
+                            <br>
                             <ul class="tag">
                                 @foreach ($item->getTags() as $tag)
                                     <li>
-                                        <a href="/?tag={{ $tag->id }}">
-                                            <i class="fa fa-tags pr-5">
-                                            </i>
+                                        <a href="/?tag={{ $tag->id }}" style="color: #797979">
+                                            <i class="fa fa-tags pr-5"></i>
                                             {{ $tag->name }}
                                         </a>
                                     </li>

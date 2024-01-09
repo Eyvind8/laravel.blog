@@ -9,6 +9,7 @@ use App\Http\Requests\FormRequest;
 use App\Models\Items;
 use App\Repositories\ItemsRepository;
 use App\Repositories\TagRepository;
+use Carbon\Carbon;
 
 class IndexController extends Controller
 {
@@ -34,6 +35,10 @@ class IndexController extends Controller
         //$tags = $tagRepository->all();
         //dd($tags[0]->name);
 
+        $requestData = $request->all();
+        $requestData['sortField'] = 'created';
+        $requestData['sortDirection'] = 'desc';
+        $request->merge($requestData);
 
         $items = $itemsRepository->list(new Filter($request->all()))->toArray();
 

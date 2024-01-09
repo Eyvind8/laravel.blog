@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="img/favicon.png">
 
 <title>
-    Acme | Home
+    JOKES ua
 </title>
 
 <!-- Bootstrap core CSS -->

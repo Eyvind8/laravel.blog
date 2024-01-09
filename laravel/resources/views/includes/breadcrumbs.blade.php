@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container hidden">
     <div class="row">
         <div class="col-lg-4 col-sm-4">
             <h1>
