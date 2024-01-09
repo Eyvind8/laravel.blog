@@ -198,7 +198,11 @@
                 <a href="contact.html">Contact</a>
             </li>
 
-            <li><input class="form-control search" placeholder=" Search" type="text"></li>
+            <li>
+                <form action="/" method="GET" class="search-form">
+                    <input type="text" name="search" class="form-control search" placeholder="Пошук" onkeypress="handleSearchKeyPress(event, this)">
+                </form>
+            </li>
         </ul>
     </div>
 </div>

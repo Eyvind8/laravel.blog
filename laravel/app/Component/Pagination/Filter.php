@@ -123,6 +123,11 @@ class Filter
     private $filter;
 
     /**
+     * @var mixed|null
+     */
+    private mixed $search;
+
+    /**
      * Filter constructor.
      * @param array $data = [
      *      'page' => '(int)',
@@ -177,6 +182,8 @@ class Filter
         }
 
         $this->tagId = $data['tag'] ?? null;
+
+        $this->search = $data['search'] ?? null;
     }
 
     /**
@@ -214,6 +221,15 @@ class Filter
     public function getTagId(): ?int
     {
         return $this->tagId;
+    }
+
+    public function getSearch(): ?string
+    {
+        if (!$this->search || mb_strlen($this->search) < 4) {
+            return null;
+        }
+
+        return $this->search;
     }
 
     /**

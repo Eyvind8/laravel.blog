@@ -36,3 +36,10 @@ var Script = function ()
             $('body,html').animate({scrollTop:0},600);
         });
 })();
+
+function handleSearchKeyPress(event, input) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        input.closest('.search-form').submit();
+    }
+}

@@ -76,7 +76,9 @@
         <div class="col-lg-3">
             <div class="blog-side-item">
                 <div class="search-row">
-                    <input type="text" class="form-control" placeholder="Search here">
+                    <form action="/" method="GET" class="search-form">
+                        <input type="text" name="search" class="form-control" placeholder="Шукати тут" onkeypress="handleSearchKeyPress(event, this)">
+                    </form>
                 </div>
                 <div class="category">
                     <h3>

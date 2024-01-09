@@ -14,12 +14,12 @@ class QueryBuilder
     /**
      * @var Builder
      */
-    protected $builder;
+    protected Builder $builder;
 
     /**
      * @var Filter
      */
-    protected $filter;
+    protected Filter $filter;
 
     /**
      * QueryBuilder constructor.
@@ -58,6 +58,13 @@ class QueryBuilder
                     ->whereColumn('item_tag.item_id', 'item.id')
                     ->where('item_tag.tag_id', $tagId);
             });
+        }
+
+        if ($this->filter->getSearch()) {
+            $searchQuery = $this->filter->getSearch();
+            $this->builder = $this->builder->whereRaw(
+                "MATCH (`content`) AGAINST (? IN BOOLEAN MODE)", [$searchQuery]
+            );
         }
 
         return new Pagination($this->builder, $this->filter->getOffset(), $this->filter->getLimit());
