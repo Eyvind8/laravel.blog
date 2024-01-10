@@ -18,10 +18,10 @@
                             <div class="col-lg-2 col-sm-2 text-right">
                                 <div class="date-wrap">
                                   <span class="date">
-                                      <?= date_parse($item['created'])['day'] ?>
+                                      {{ date_parse($item['created'])['day'] }}
                                   </span>
                                     <span class="month">
-                                      <?= getUkrainianMonth($item['created']) ?>
+                                      {{ getUkrainianMonth($item['created']) }}
                                 </span>
                                 </div>
                                 <ul class="list-unstyled">
@@ -68,9 +68,9 @@
                                         </li>
                                     @endforeach
                                 </ul>
-                                {{--                            <a href="blog-detail.html" class="btn btn-primary">--}}
-                                {{--                                Continue Reading--}}
-                                {{--                            </a>--}}
+                                <a href="/id/{{ $item['id'] }}/{{ urlSlug($item['content']) }}" class="">
+                                    <em>Кометувати</em>
+                                </a>
                             </div>
                         </div>
                     @endforeach
