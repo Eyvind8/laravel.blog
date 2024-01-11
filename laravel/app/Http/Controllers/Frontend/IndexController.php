@@ -50,4 +50,9 @@ class IndexController extends Controller
 
         return view('items/index')->with('items', $items);
     }
+
+    public function show(FormRequest $request)
+    {
+        dd($request->all());
+    }
 }
