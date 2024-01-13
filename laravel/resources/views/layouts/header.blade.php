@@ -3,8 +3,9 @@
         <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse"
                 type="button"><span class="icon-bar"></span> <span class="icon-bar"></span>
             <span class="icon-bar"></span></button>
-        <a class="navbar-brand" href="index.html">JOKESUA
-            <span>com</span></a>
+        <a class="navbar-brand" href="/">ЖАРТ
+            <span>club</span>
+        </a>
     </div>
 
     <div class="navbar-collapse collapse">

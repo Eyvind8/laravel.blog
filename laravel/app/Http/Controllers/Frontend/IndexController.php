@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Component\Pagination\Filter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FormRequest;
+use App\Models\Comment;
 use App\Models\Items;
 use App\Repositories\ItemsRepository;
 use App\Repositories\TagRepository;
@@ -50,10 +51,16 @@ class IndexController extends Controller
         return view('items/index')->with('items', $items);
     }
 
+    /**
+     * @param $itemId
+     * @param ItemsRepository $itemsRepository
+     * @return \Illuminate\Contracts\View\View
+     */
     public function show($itemId, ItemsRepository $itemsRepository)
     {
         $item = $itemsRepository->get($itemId);
+        $comments = Comment::where('item_id', $itemId)->orderBy('id', 'desc')->get();
 
-        return view('items/item')->with('item', $item);
+        return view('items/item')->with(['item' => $item, 'comments' => $comments]);
     }
 }

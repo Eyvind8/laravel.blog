@@ -1,25 +1,10 @@
-var Script = function ()
-{
-//    tool tips
-    $('.tooltips').tooltip();
-
-//    popovers
-    $('.popovers').popover();
-
-//    bxslider
-
-    // $('.bxslider').show();
-    // $('.bxslider').bxSlider({
-    //     minSlides: 4,
-    //     maxSlides: 4,
-    //     slideWidth: 276,
-    //     slideMargin: 20
-    // });
-
-}();
-
 (function()
 {
+        // tool tips
+            $('.tooltips').tooltip();
+
+        // popovers
+            $('.popovers').popover();
         $('<i id="back-to-top"></i>').appendTo($('body'));
 
         $(window).scroll(function() {
@@ -35,7 +20,29 @@ var Script = function ()
         $('#back-to-top').click(function() {
             $('body,html').animate({scrollTop:0},600);
         });
+
+        $("#submitComment").on("click", function () {
+            var formData = $("#commentForm").serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "/comments/store",
+                data: formData,
+                success: function (data) {
+                    $('#commentTextarea').val('');
+                    showModal(data.message);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
 })();
+
+function showModal(message) {
+    $('#myModal').find('.modal-body').text(message);
+    $('#myModal').modal('show');
+}
 
 function handleSearchKeyPress(event, input) {
     if (event.key === 'Enter') {

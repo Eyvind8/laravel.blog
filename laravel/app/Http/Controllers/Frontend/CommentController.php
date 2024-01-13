@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 
@@ -10,7 +11,7 @@ class CommentController extends Controller
 {
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -26,15 +27,6 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return redirect()->back()->with('success', 'Комментарий успешно добавлен');
-    }
-
-    public function index($itemId)
-    {
-        // Получение комментариев для конкретного элемента
-        $comments = Comment::where('item_id', $itemId)->get();
-
-        return view('comments.index', ['comments' => $comments]);
+        return response()->json(['message' => 'Коментар успішно доданий та зараз на модерацiї']);
     }
 }
-

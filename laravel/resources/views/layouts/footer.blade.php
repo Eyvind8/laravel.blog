@@ -190,6 +190,25 @@
 </footer>
 <!--small footer end-->
 
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    Повідомлення
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Зрозуміло</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
