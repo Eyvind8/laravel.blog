@@ -9,7 +9,6 @@ use App\Http\Requests\FormRequest;
 use App\Models\Items;
 use App\Repositories\ItemsRepository;
 use App\Repositories\TagRepository;
-use Carbon\Carbon;
 
 class IndexController extends Controller
 {
@@ -51,8 +50,10 @@ class IndexController extends Controller
         return view('items/index')->with('items', $items);
     }
 
-    public function show(FormRequest $request)
+    public function show($itemId, ItemsRepository $itemsRepository)
     {
-        dd($request->all());
+        $item = $itemsRepository->get($itemId);
+
+        return view('items/item')->with('item', $item);
     }
 }

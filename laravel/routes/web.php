@@ -20,3 +20,5 @@ use \App\Http\Controllers\Frontend\IndexController;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/id/{id}/{dynamicSlug}', [IndexController::class, 'show'])->where('dynamicSlug', '.*');
+
+Route::post('/comments', [\App\Http\Controllers\Frontend\CommentController::class, 'store'])->name('comments.store');
