@@ -9,7 +9,7 @@
                 >
             </form>
         </div>
-        <div class="category">
+        {{--<div class="category">
             <h3>
                 Categories
             </h3>
@@ -51,8 +51,8 @@
                 </li>
             </ul>
         </div>
-
-        <div class="blog-post">
+--}}
+        {{--<div class="blog-post">
             <h3>
                 Latest Blog Post
             </h3>
@@ -101,128 +101,66 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div>--}}
 
         <div class="tags">
             <h3>
                 Tags
             </h3>
             <ul class="tag">
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        flat
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        clean
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        admin
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        UI
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        responsive
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        Web Design
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        UIX
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        Blog
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        flat Admin
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-tags pr-5">
-                        </i>
-                        Dashboard
-                    </a>
-                </li>
+                @foreach ($tags as $tag)
+                    <li>
+                        <a href="/?tag={{ $tag->id }}">
+                            <i class="fa fa-tags pr-5"></i>
+                            {{ $tag->name }}
+                        </a>
+                    </li>
+                @endforeach
+
             </ul>
         </div>
 
-
-        <div class="archive">
-            <h3>
-                Archive
-            </h3>
-            <ul class="list-unstyled">
-                <li>
-                    <a href="javascript:;">
-                        <i class="fa fa-angle-double-right pr-10">
-                        </i>
-                        May 2014
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="fa fa-angle-double-right pr-10">
-                        </i>
-                        April 2014
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="fa fa-angle-double-right pr-10">
-                        </i>
-                        March 2014
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="fa fa-angle-double-right pr-10">
-                        </i>
-                        February 2014
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="fa fa-angle-double-right pr-10">
-                        </i>
-                        January 2014
-                    </a>
-                </li>
-            </ul>
-        </div>
+{{--        <div class="archive">--}}
+{{--            <h3>--}}
+{{--                Archive--}}
+{{--            </h3>--}}
+{{--            <ul class="list-unstyled">--}}
+{{--                <li>--}}
+{{--                    <a href="javascript:;">--}}
+{{--                        <i class="fa fa-angle-double-right pr-10">--}}
+{{--                        </i>--}}
+{{--                        May 2014--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <a href="javascript:;">--}}
+{{--                        <i class="fa fa-angle-double-right pr-10">--}}
+{{--                        </i>--}}
+{{--                        April 2014--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <a href="javascript:;">--}}
+{{--                        <i class="fa fa-angle-double-right pr-10">--}}
+{{--                        </i>--}}
+{{--                        March 2014--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <a href="javascript:;">--}}
+{{--                        <i class="fa fa-angle-double-right pr-10">--}}
+{{--                        </i>--}}
+{{--                        February 2014--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <a href="javascript:;">--}}
+{{--                        <i class="fa fa-angle-double-right pr-10">--}}
+{{--                        </i>--}}
+{{--                        January 2014--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
+{{--        </div>--}}
     </div>
 </div>

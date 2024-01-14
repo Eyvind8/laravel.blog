@@ -9,11 +9,11 @@
                     @include('includes.item', ['item' => $item, 'commentLink' => false])
                     <div class="col-lg-2"></div>
                     <div class="col-lg-10">
-                        <div class="form-group">
+                        <div class="form-group" style="padding-bottom: 10px; margin-top: 20px">
                             @foreach ($comments as $comment)
                                 <div class="col-lg-12" style="margin-bottom: 25px; padding-left: 0px">
-                                    <span class="col-lg-2">{{ date('Y-m-d', strtotime($comment->created)) }}</span>
-                                    <span class="col-lg-10">{{ $comment->text }}</span>
+                                    <span  style="padding-left: 0px;" class="col-lg-2">{{ date('Y-m-d', strtotime($comment->created)) }}</span>
+                                    <span class="col-lg-10" style="font-size: 22px; margin-top: -7px">{{ $comment->text }}</span>
                                 </div>
                             @endforeach
                         </div>
