@@ -2,6 +2,7 @@
 
 namespace App\Component\Pagination;
 
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
@@ -52,13 +53,31 @@ class QueryBuilder
 
         if ($this->filter->getTagId()) {
             $tagId = $this->filter->getTagId();
-            $this->builder = $this->builder->whereExists(function ($query) use ($tagId) {
-                $query->select(DB::raw(1))
-                    ->from('item_tag')
-                    ->whereColumn('item_tag.item_id', 'item.id')
-                    ->where('item_tag.tag_id', $tagId);
-            });
+            $tag = Tag::find($tagId);
+
+            if ($tag) {
+                $tags = Tag::where('parent_id', $tagId)->pluck('id')->toArray();
+
+                $this->builder = $this->builder->where(function ($query) use ($tagId, $tags) {
+                    $query->orWhereExists(function ($subquery) use ($tagId) {
+                        $subquery->select(DB::raw(1))
+                            ->from('item_tag')
+                            ->whereColumn('item_tag.item_id', 'item.id')
+                            ->where('item_tag.tag_id', $tagId);
+                    });
+
+                    if (!empty($tags)) {
+                        $query->orWhereExists(function ($subquery) use ($tags) {
+                            $subquery->select(DB::raw(1))
+                                ->from('item_tag')
+                                ->whereColumn('item_tag.item_id', 'item.id')
+                                ->whereIn('item_tag.tag_id', $tags);
+                        });
+                    }
+                });
+            }
         }
+
 
         if ($this->filter->getSearch()) {
             $searchQuery = $this->filter->getSearch();
