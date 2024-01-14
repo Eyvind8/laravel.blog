@@ -19,7 +19,10 @@
 
 <!--container start-->
 <div class="container">
-    @yield('content')
+    <div class="row">
+        @yield('content')
+        @include('layouts.right-column')
+    </div>
 </div>
 <!--container end-->
 

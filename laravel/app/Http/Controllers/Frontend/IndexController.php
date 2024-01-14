@@ -59,6 +59,9 @@ class IndexController extends Controller
     public function show($itemId, ItemsRepository $itemsRepository)
     {
         $item = $itemsRepository->get($itemId);
+        $tags = $itemsRepository->getTagsForItem($itemId)->toArray();
+        $item->setTags($tags);
+
         $comments = Comment::where('item_id', $itemId)->orderBy('id', 'desc')->get();
 
         return view('items/item')->with(['item' => $item, 'comments' => $comments]);
