@@ -6,7 +6,7 @@
         <div class="blog-item">
             <div class="row">
                 <div class="col-lg-12">
-                    @include('includes.item', ['item' => $item, 'commentLink' => false])
+                    @include('includes.item_one', ['item' => $item, 'commentLink' => false])
                     <div class="col-lg-2"></div>
                     <div class="col-lg-10">
                         <div class="form-group" style="padding-bottom: 10px; margin-top: 20px">

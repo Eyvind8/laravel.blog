@@ -14,7 +14,7 @@
             <div class="blog-item">
                 @foreach ($items['list'] as $item)
                     <div class="row" style="margin-bottom: 20px">
-                        @include('includes.item', ['item' => $item, 'commentLink' => true])
+                        @include('includes.item_one', ['item' => $item, 'commentLink' => true])
                     </div>
                 @endforeach
             </div>
