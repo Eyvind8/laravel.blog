@@ -66,4 +66,9 @@ class IndexController extends Controller
 
         return view('items/item')->with(['item' => $item, 'comments' => $comments]);
     }
+
+    public function contact()
+    {
+        return view('items/contact');
+    }
 }
