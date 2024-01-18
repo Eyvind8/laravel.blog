@@ -78,13 +78,38 @@ class QueryBuilder
             }
         }
 
-
         if ($this->filter->getSearch()) {
             $searchQuery = $this->filter->getSearch();
-            $this->builder = $this->builder->whereRaw(
-                "MATCH (`content`) AGAINST (? IN BOOLEAN MODE)", [$searchQuery]
-            );
+            $tagsBySearch = [];
+
+            $tagId = Tag::where('name', $searchQuery)->pluck('id')->toArray();
+
+            if ($tagId) {
+                $tagsWithParent = Tag::where('parent_id', $tagId)->pluck('id')->toArray();
+                $tagsBySearch = array_merge([$tagId], $tagsWithParent);
+            }
+
+            $this->builder = $this->builder->where(function ($query) use ($searchQuery, $tagsBySearch) {
+                $query->orWhereRaw(
+                    "MATCH (`content`) AGAINST (? IN BOOLEAN MODE)", [$searchQuery]
+                );
+
+                $query->orWhereExists(function ($subquery) use ($tagsBySearch) {
+                    $subquery->select(DB::raw(1))
+                        ->from('item_tag')
+                        ->join('tag', 'item_tag.tag_id', '=', 'tag.id')
+                        ->whereColumn('item_tag.item_id', 'item.id')
+                        ->whereIn('tag.id', $tagsBySearch);
+                });
+            });
         }
+
+
+//        $sql = $this->builder->toSql();
+//        $bindings = $this->builder->getBindings();
+
+//        dump($sql);
+//        dd($bindings);
 
         return new Pagination($this->builder, $this->filter->getOffset(), $this->filter->getLimit());
     }
