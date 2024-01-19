@@ -37,9 +37,15 @@
      * </a>
      * </h1>
      * <?php */ ?>
-    <h3 style="white-space: pre-line; margin-top:-15px; margin-bottom: 15px; color: #444e67; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">
-        {{ Str::ucfirst($item['content']) }}
-    </h3>
+    <div style="display: flex; align-items: center;">
+        <h3 class="textToCopy"
+            style="white-space: pre-line; margin-top:-15px; margin-bottom: 15px; color: #444e67; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">
+            {{ Str::ucfirst($item['content']) }}
+        </h3>
+        <a href="#" class="copyButton" style="padding-left: 10px; margin-top: -3px">
+            <img width="16px" alt="copy" title="Копіювати" style="opacity: 0.5" src="/img/copy.png">
+        </a>
+    </div>
     <br>
     <ul class="tag">
         @foreach ($item->getTags() as $tag)

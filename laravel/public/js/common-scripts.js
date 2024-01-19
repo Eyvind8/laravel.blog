@@ -37,6 +37,12 @@
                 }
             });
         });
+
+        $(".copyButton").click(function () {
+            var $textToCopy = $(this).closest('div').find('.textToCopy');
+            var textToCopy = $textToCopy.text();
+            copyTextToClipboard(textToCopy);
+        });
 })();
 
 function showModal(message) {
@@ -49,4 +55,12 @@ function handleSearchKeyPress(event, input) {
         event.preventDefault();
         input.closest('.search-form').submit();
     }
+}
+
+function copyTextToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Text successfully copied to clipboard');
+    }).catch(function(err) {
+        alert('Unable to copy text to clipboard', err);
+    });
 }
