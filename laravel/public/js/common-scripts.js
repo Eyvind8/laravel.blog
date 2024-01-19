@@ -53,13 +53,32 @@ function showModal(message) {
 function handleSearchKeyPress(event, input) {
     if (event.key === 'Enter') {
         event.preventDefault();
-        input.closest('.search-form').submit();
+
+        if (validateSearch(input)) {
+            input.closest('.search-form').submit();
+        }
     }
+}
+
+function validateSearch(input) {
+    var searchTerm = input.value.trim();
+
+    if (searchTerm.length < 4) {
+        $('#myModal').find('.modal-body').text('Введіть не менше 4 символів для пошуку');
+        $('#myModal').modal('show');
+
+        $('#myModal').on('hidden.bs.modal', function () {
+            input.focus();
+        });
+
+        return false;
+    }
+
+    return true;
 }
 
 function copyTextToClipboard(text) {
     navigator.clipboard.writeText(text).then(function() {
-        alert('Text successfully copied to clipboard');
     }).catch(function(err) {
         alert('Unable to copy text to clipboard', err);
     });
