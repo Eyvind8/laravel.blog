@@ -24,3 +24,14 @@ Route::get('/contact', [IndexController::class, 'contact']);
 Route::get('/id/{id}/{dynamicSlug}', [IndexController::class, 'show'])->where('dynamicSlug', '.*');
 
 Route::post('/comments/store', [CommentController::class, 'store'])->name('comments.store');
+
+Route::post('/toggle-like/{itemId}', function ($itemId) {
+    $item = \App\Models\Items::findOrFail($itemId);
+
+    $item->increment('likes');
+    $item->save();
+
+    return response()->json([
+        'likes_count' => $item->likes,
+    ]);
+});

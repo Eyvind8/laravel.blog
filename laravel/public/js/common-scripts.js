@@ -83,3 +83,24 @@ function copyTextToClipboard(text) {
         alert('Unable to copy text to clipboard', err);
     });
 }
+
+function toggleLike(itemId) {
+        const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
+        fetch(`/toggle-like/${itemId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken,
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                const likesCountElement = document.getElementById('likesCount_' + itemId);
+                likesCountElement.innerText = data.likes_count + ' Likes';
+
+                const likesListItemElement = likesCountElement.closest('li');
+                likesListItemElement.classList.remove('hidden');
+            })
+            .catch(error => console.error('Error:', error));
+    }

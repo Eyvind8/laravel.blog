@@ -30,3 +30,6 @@
 <script src="{{ asset('js/html5shiv.js') }}"></script>
 <script src="{{ asset('js/respond.min.js') }}"></script>
 <![endif]-->
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+

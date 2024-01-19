@@ -13,9 +13,9 @@
                 209 View
             </em>
         </li>
-        <li class="hidden">
+        <li class="<?= $item->likes ? '' : 'hidden' ?>">
             <em>
-                23 Share
+                <span id="likesCount_{{ $item->id }}">{{ $item->likes }} Likes</span>
             </em>
         </li>
     </ul>
@@ -42,8 +42,11 @@
             style="white-space: pre-line; margin-top:-15px; margin-bottom: 15px; color: #444e67; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">
             {{ Str::ucfirst($item['content']) }}
         </h3>
-        <a href="#" class="copyButton" style="padding-left: 10px; margin-top: -3px">
+        <a href="#" class="copyButton" style="padding-left: 10px; margin-top: -3px; padding-right: 10px;">
             <img width="16px" alt="copy" title="Копіювати" style="opacity: 0.5" src="/img/copy.png">
+        </a>
+        <a href="#" onclick="toggleLike({{ $item->id }}); return false;" id="likeButton">
+            <img src="/img/heart_small-2.png" title="Вподобайка :)" width="16px">
         </a>
     </div>
     <br>
