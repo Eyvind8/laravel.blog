@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $title
  * @property string $content
  * @property int $likes
+ * @property int $views
  * @property string $created
  * @property string $update
  * @property int $type
@@ -42,6 +43,7 @@ class Items extends Model implements ItemsInterface
         'status',
         'title',
         'content',
+        'views',
         'likes',
         'created',
         'updated',
@@ -77,7 +79,7 @@ class Items extends Model implements ItemsInterface
     {
         parent::boot();
 
-        //static::addGlobalScope(new ItemsActiveScope());
+        static::addGlobalScope(new ItemsActiveScope());
 
         /**
          * static::addGlobalScope('active', function (Builder $builder) {

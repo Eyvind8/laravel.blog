@@ -22,16 +22,9 @@ use \App\Http\Controllers\Frontend\IndexController;
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/contact', [IndexController::class, 'contact']);
 Route::get('/id/{id}/{dynamicSlug}', [IndexController::class, 'show'])->where('dynamicSlug', '.*');
-
+Route::post('/increment-like/{itemId}', [IndexController::class, 'incrementLike']);
+Route::post('/increment-views', [IndexController::class, 'incrementViews']);
 Route::post('/comments/store', [CommentController::class, 'store'])->name('comments.store');
 
-Route::post('/toggle-like/{itemId}', function ($itemId) {
-    $item = \App\Models\Items::findOrFail($itemId);
 
-    $item->increment('likes');
-    $item->save();
 
-    return response()->json([
-        'likes_count' => $item->likes,
-    ]);
-});

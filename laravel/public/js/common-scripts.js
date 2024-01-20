@@ -1,10 +1,10 @@
 (function()
 {
         // tool tips
-            $('.tooltips').tooltip();
+        $('.tooltips').tooltip();
 
         // popovers
-            $('.popovers').popover();
+        $('.popovers').popover();
         $('<i id="back-to-top"></i>').appendTo($('body'));
 
         $(window).scroll(function() {
@@ -40,9 +40,11 @@
 
         $(".copyButton").click(function () {
             var $textToCopy = $(this).closest('div').find('.textToCopy');
-            var textToCopy = $textToCopy.text();
+            var textToCopy = $.trim($textToCopy.text());
             copyTextToClipboard(textToCopy);
         });
+
+        incrementViews();
 })();
 
 function showModal(message) {
@@ -85,22 +87,51 @@ function copyTextToClipboard(text) {
 }
 
 function toggleLike(itemId) {
-        const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+    const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
-        fetch(`/toggle-like/${itemId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken,
-            },
+    fetch(`/increment-like/${itemId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            const likesCountElement = document.getElementById('likesCount_' + itemId);
+            likesCountElement.innerText = data.likes_count + ' Likes';
+
+            const likesListItemElement = likesCountElement.closest('li');
+            likesListItemElement.classList.remove('hidden');
         })
-            .then(response => response.json())
-            .then(data => {
-                const likesCountElement = document.getElementById('likesCount_' + itemId);
-                likesCountElement.innerText = data.likes_count + ' Likes';
+        .catch(error => console.error('Error:', error));
+}
 
-                const likesListItemElement = likesCountElement.closest('li');
-                likesListItemElement.classList.remove('hidden');
-            })
-            .catch(error => console.error('Error:', error));
+function incrementViews() {
+    var $itemIds = $('.js-item-id');
+
+    if ($itemIds.length <= 0) {
+        return;
     }
+
+    var itemIds = [];
+
+    $itemIds.each(function() {
+        itemIds.push($(this).val());
+    });
+
+    const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
+    $.ajax({
+        url: '/increment-views',
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken,
+        },
+        data: { itemIds: itemIds },
+        error: function(error) {
+            console.error('Error AJAX-query:', error);
+        }
+    });
+
+}

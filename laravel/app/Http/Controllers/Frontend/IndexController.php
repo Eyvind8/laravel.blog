@@ -13,6 +13,11 @@ use App\Repositories\TagRepository;
 
 class IndexController extends Controller
 {
+    /**
+     * @param FormRequest $request
+     * @param ItemsRepository $itemsRepository
+     * @param TagRepository $tagRepository
+     */
     public function index(
         FormRequest     $request,
         ItemsRepository $itemsRepository,
@@ -67,8 +72,40 @@ class IndexController extends Controller
         return view('items/item')->with(['item' => $item, 'comments' => $comments]);
     }
 
+    /**
+     *
+     */
     public function contact()
     {
         return view('items/contact');
+    }
+
+    /**
+     * @param FormRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function incrementViews(FormRequest $request) {
+        $itemIds = $request->input('itemIds', []);
+
+        if (!empty($itemIds)) {
+            Items::whereIn('id', $itemIds)->increment('views');
+        }
+
+        return response()->json(['success' => true]);
+    }
+
+    /**
+     * @param $itemId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function incrementLike($itemId)
+    {
+        $item = Items::findOrFail($itemId);
+
+        $item->increment('likes');
+
+        return response()->json([
+            'likes_count' => $item->likes,
+        ]);
     }
 }

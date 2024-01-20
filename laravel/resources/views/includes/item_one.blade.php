@@ -10,7 +10,7 @@
     <ul class="list-unstyled">
         <li style="padding-bottom: 1px">
             <em>
-                209 View
+                {{ $item->views }} View
             </em>
         </li>
         <li class="<?= $item->likes ? '' : 'hidden' ?>">
@@ -37,17 +37,16 @@
      * </a>
      * </h1>
      * <?php */ ?>
-    <div style="display: flex; align-items: center;">
-        <h3 class="textToCopy"
-            style="white-space: pre-line; margin-top:-15px; margin-bottom: 15px; color: #444e67; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif">
-            {{ Str::ucfirst($item['content']) }}
-        </h3>
-        <a href="#" class="copyButton" style="padding-left: 10px; margin-top: -3px; padding-right: 10px;">
-            <img width="16px" alt="copy" title="Копіювати" style="opacity: 0.5" src="/img/copy.png">
+    <div style="display: flex;">
+        <span class="itemText textToCopy">{{ Str::ucfirst($item['content']) }}</span>
+
+        <a href="#" class="copyButton" onclick="return false;">
+            <img width="16px" alt="copy" title="Копіювати" src="/img/copy.png">
         </a>
-        <a href="#" onclick="toggleLike({{ $item->id }}); return false;" id="likeButton">
+        <a href="#" class="likeButton" onclick="toggleLike({{ $item->id }}); return false;">
             <img src="/img/heart_small-2.png" title="Вподобайка :)" width="16px">
         </a>
+        <input class="js-item-id" type="hidden" value="{{ $item->id }}">
     </div>
     <br>
     <ul class="tag">
