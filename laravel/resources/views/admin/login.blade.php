@@ -1,3 +1,7 @@
+@extends('admin.layouts.default')
+
+@section('content')
+
 <form method="POST" action="{{ route('admin.login') }}">
     @csrf
 
@@ -10,3 +14,4 @@
     <button type="submit">Login</button>
 </form>
 
+@endsection
