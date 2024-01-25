@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-class Items
+class ItemsController
 {
     function show()
     {
-        dd('Items');
+        return view('admin.items', ['key' => 'value']);
     }
 }

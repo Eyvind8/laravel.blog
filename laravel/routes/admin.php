@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Backend\Items;
+use App\Http\Controllers\Backend\ItemsController;
 use App\Http\Controllers\Backend\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,11 +11,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->group(function () {
-
-    // Hello admin route
-    Route::get('/', function () {
-        return 'Hello admin';
-    });
+    Route::get('/', [ItemsController::class, 'show']);
 
     // Auth routes
     Route::withoutMiddleware(['admin'])->group(function () {
@@ -27,6 +23,6 @@ Route::prefix('admin')->group(function () {
     Route::match(['get', 'post'], '/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
     // Items route
-    Route::get('/items', [Items::class, 'show']);
+    Route::get('/items', [ItemsController::class, 'show']);
 });
 
