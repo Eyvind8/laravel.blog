@@ -1,14 +1,14 @@
 <!-- resources/views/includes/header.blade.php -->
 <div class="row header shadow-sm">
     <!--Logo-->
-    <div class="col-sm-3 pl-0 text-center header-logo">
+    <div class="col-sm-2 pl-0 text-center header-logo">
         <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
             <h3 class="logo"><a href="#" class="text-secondary logo"><i class="fa fa-rocket"></i> Sleek<span class="small">admin</span></a></h3>
         </div>
     </div>
     <!--Logo-->
     <!--Header Menu-->
-    <div class="col-sm-9 header-menu pt-2 pb-0">
+    <div class="col-sm-10 header-menu pt-2 pb-0">
         <div class="row">
 
             <!--Menu Icons-->

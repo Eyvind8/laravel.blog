@@ -8,7 +8,7 @@
     @include('admin.layouts.header')
     <div class="row main-content">
         @include('admin.layouts.sidebar')
-        <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
+        <div class="col-sm-10 col-xs-12 content pt-3 pl-0">
             @yield('content')
             @include('admin.layouts.footer')
         </div>

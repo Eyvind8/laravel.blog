@@ -16,12 +16,10 @@ class IndexController extends Controller
     /**
      * @param FormRequest $request
      * @param ItemsRepository $itemsRepository
-     * @param TagRepository $tagRepository
      */
     public function index(
         FormRequest     $request,
-        ItemsRepository $itemsRepository,
-        TagRepository   $tagRepository
+        ItemsRepository $itemsRepository
     )
     {
         /**

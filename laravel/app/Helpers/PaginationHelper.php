@@ -40,33 +40,3 @@ function buildPagination(int $totalPages, int $currentPage)
 
     return $pagination;
 }
-
-function buildPaginationOld(int $totalPages, int $currentPage)
-{
-    $pagination = '';
-
-    // Добавляем ссылку на предыдущую страницу
-    if ($currentPage > 1) {
-        $pagination .= '<a href="?page=' . ($currentPage - 1) . '">&laquo;</a>';
-    } else {
-        $pagination .= '<span class="disabled">&laquo;</span>';
-    }
-
-    // Добавляем ссылки на страницы
-    for ($i = 1; $i <= $totalPages; $i++) {
-        if ($i == $currentPage) {
-            $pagination .= '<span class="active">' . $i . '</span>';
-        } else {
-            $pagination .= '<a href="?page=' . $i . '">' . $i . '</a>';
-        }
-    }
-
-    // Добавляем ссылку на следующую страницу
-    if ($currentPage < $totalPages) {
-        $pagination .= '<a href="?page=' . ($currentPage + 1) . '">&raquo;</a>';
-    } else {
-        $pagination .= '<span class="disabled">&raquo;</span>';
-    }
-
-    return $pagination;
-}
