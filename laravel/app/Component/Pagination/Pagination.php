@@ -36,16 +36,23 @@ class Pagination implements \JsonSerializable, \Iterator
     private $limit;
 
     /**
-     * Pagination constructor.
+     * @var Filter
+     */
+    private Filter $filter;
+
+    /**
      * @param Builder $builder
      * @param int $offset
      * @param int $limit
+     * @param string $sortField
+     * @param string $sortDirection
      */
-    public function __construct(Builder $builder, int $offset, int $limit)
+    public function __construct(Builder $builder, Filter $filter)
     {
         $this->builder = $builder;
-        $this->offset = $offset;
-        $this->limit = $limit;
+        $this->offset = $filter->getOffset();
+        $this->limit = $filter->getLimit();
+        $this->filter = $filter;
         $this->next();
     }
 
@@ -121,6 +128,12 @@ class Pagination implements \JsonSerializable, \Iterator
         return [
             'total_pages' => (int)ceil($this->total / $this->limit),
             'current_page' => (int)ceil($this->offset / $this->limit),
+            'total' => $this->total,
+            'limit' => $this->limit,
+            'sort' => $this->filter->getSortField(),
+            'sort_dir' => $this->filter->getSortDirection(),
+            'search' => $this->filter->getSearch(),
+            'tag_id' => $this->filter->getTagId(),
             'list' => $this->current,
         ];
     }

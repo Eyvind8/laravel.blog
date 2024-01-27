@@ -111,6 +111,6 @@ class QueryBuilder
 //        dump($sql);
 //        dd($bindings);
 
-        return new Pagination($this->builder, $this->filter->getOffset(), $this->filter->getLimit());
+        return new Pagination($this->builder, $this->filter);
     }
 }

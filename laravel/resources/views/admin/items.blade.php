@@ -1,7 +1,6 @@
 @extends('admin.layouts.default')
 
 @section('content')
-
     <a href="/admin/items">
         <h5 class="mb-3"><strong>Items</strong></h5>
     </a>
@@ -22,14 +21,15 @@
                         <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
-                                    <div class="dataTables_length" id="example_length"><label>Show <select
-                                                    name="example_length" aria-controls="example"
+                                    <div class="dataTables_length" id="example_length"><label>Show
+                                            <select id="limitItemsSet" aria-controls="example"
                                                     class="custom-select custom-select-sm form-control form-control-sm">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select> entries</label></div>
+                                                <option {{ $items['limit'] == 10 ? 'selected' : '' }} value="10">10</option>
+                                                <option {{ $items['limit'] == 25 ? 'selected' : '' }} value="25">25</option>
+                                                <option {{ $items['limit'] == 50 ? 'selected' : '' }} value="50">50</option>
+                                                <option {{ $items['limit'] == 100 ? 'selected' : '' }} value="100">100</option>
+                                            </select> entries</label>
+                                    </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <div id="example_filter" class="dataTables_filter"><label>Search:<input
@@ -50,16 +50,11 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 style="width: 10px; padding-right: 0px;">
-                                                Id
-                                            </th>
-                                            <th tabindex="0" aria-controls="example" rowspan="1"
-                                                colspan="1"
-                                                style="width: 373px;">Text
-                                            </th>
-                                            <th tabindex="0" aria-controls="example" rowspan="1"
-                                                colspan="1"
-                                                style="width: 53px;">
                                                 Data
+                                            </th>
+                                            <th tabindex="0" aria-controls="example" rowspan="1"
+                                                colspan="1"
+                                                style="width: 373px;">Content / Tags
                                             </th>
                                         </tr>
                                         </thead>
@@ -71,16 +66,26 @@
                                     </table>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-sm-12 col-md-5">
+                                    @php
+                                        $currentPage = $items['current_page'];
+                                        $perPage = $items['limit'];
+                                        $totalEntries = $items['total'];
+
+                                        $startEntry = ($currentPage - 1) * $perPage + 1;
+                                        $endEntry = min($currentPage * $perPage, $totalEntries);
+                                    @endphp
+
                                     <div class="dataTables_info" id="example_info" role="status" aria-live="polite">
-                                        Showing
-                                        1 to 10 of 57 entries
+                                        Showing {{ $startEntry }} to {{ $endEntry }} of {{ $totalEntries }} entries
                                     </div>
+
                                 </div>
                                 <div class="col-sm-12 col-md-7">
                                     <div style="padding-top: 14px;" class="dataTables_paginate paging_simple_numbers" id="example_paginate">
-                                         <?= buildAdminPaginator($items['total_pages'], $items['current_page']); ?>
+                                         <?= buildAdminPaginator($items); ?>
                                     </div>
                                 </div>
                             </div>

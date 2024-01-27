@@ -6,14 +6,16 @@ use App\Component\Pagination\Filter;
 use App\Http\Requests\FormRequest;
 use App\Models\Items;
 use App\Repositories\ItemsRepository;
+use Illuminate\Support\Facades\Session;
 
 class ItemsController
 {
     function show(FormRequest $request, ItemsRepository $itemsRepository)
     {
         $requestData = $request->all();
-        $requestData['sortField'] = 'created';
-        $requestData['sortDirection'] = 'desc';
+        $requestData['limit'] = $request->input('limit', 10);
+        $requestData['sortField'] = $request->input('sortField', 'created');
+        $requestData['sortDirection'] = $request->input('sortDirection', 'desc');
         $request->merge($requestData);
 
         $items = $itemsRepository->list(new Filter($request->all()))->toArray();

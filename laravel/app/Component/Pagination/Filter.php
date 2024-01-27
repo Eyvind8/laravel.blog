@@ -182,7 +182,6 @@ class Filter
         }
 
         $this->tagId = $data['tag'] ?? null;
-
         $this->search = $data['search'] ?? null;
     }
 

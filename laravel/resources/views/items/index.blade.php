@@ -20,7 +20,7 @@
             </div>
 
             <div class="text-center">
-                    <?php echo buildPagination($items['total_pages'], $items['current_page']); ?>
+                    <?php echo buildPagination($items); ?>
             </div>
         @endif
     </div>
