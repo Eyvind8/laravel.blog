@@ -426,6 +426,20 @@ function handleSearchKeyPress(event, input) {
     }
 }
 
+function validateSearch(input) {
+    var searchTerm = input.value.trim();
+
+    if (searchTerm.length < 4) {
+        alertify.set('notifier','position', 'top-right');
+        alertify.notify('Minimum 4 characters', 'custom', 3, function(){}).dismissOthers();
+
+        return false;
+    }
+
+    return true;
+}
+
+
 function handleSelectChange(url, selectElement) {
     var selectedLimit = selectElement.value;
     var newUrl = url + '?limit=' + selectedLimit;
