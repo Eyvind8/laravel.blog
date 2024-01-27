@@ -437,6 +437,5 @@ function changeSorting(url, column) {
     var sortingOrder = $(clickedTh).hasClass('sorting_asc') ? 'desc' : 'asc';
 
     var newUrl = url + '?sort=' + column + '&sort_dir=' + sortingOrder;
-    alert(newUrl);
     window.location.href = newUrl;
 }

@@ -181,7 +181,7 @@ class Filter
             $this->filter = \json_decode($data['filter'], true) ?: null;
         }
 
-        $this->tagId = $data['tag'] ?? null;
+        $this->tagId = !empty($data['tag']) ? (int)$data['tag'] : null;
         $this->search = $data['search'] ?? null;
     }
 
