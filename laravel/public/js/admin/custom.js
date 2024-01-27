@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+
     /*==============Page Loader=======================*/
 
     $(".loader-wrapper").fadeOut("slow");
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
     $('#alertify_success').on('click', function() {
         alertify.set('notifier','position', 'bottom-right');
-        alertify.success('Success notification message.').dismissOthers(); 
+        alertify.success('Success notification message.').dismissOthers();
     });
 
     $('#alertify_error').on('click', function() {
@@ -111,7 +111,7 @@ $(document).ready(function() {
 
     $('#alertify_warning').on('click', function() {
         alertify.set('notifier','position', 'bottom-right');
-        alertify.warning('Warning notification message.').dismissOthers(); 
+        alertify.warning('Warning notification message.').dismissOthers();
     });
 
     /*Top positioned alert */
@@ -124,7 +124,7 @@ $(document).ready(function() {
 
     $('#alertify_success_top').on('click', function() {
         alertify.set('notifier','position', 'top-right');
-        alertify.success('Success notification message.').dismissOthers(); 
+        alertify.success('Success notification message.').dismissOthers();
     });
 
     $('#alertify_error_top').on('click', function() {
@@ -134,7 +134,7 @@ $(document).ready(function() {
 
     $('#alertify_warning_top').on('click', function() {
         alertify.set('notifier','position', 'top-right');
-        alertify.warning('Warning notification message.').dismissOthers(); 
+        alertify.warning('Warning notification message.').dismissOthers();
     });
 
     /*========== Alertify notifier =========== */
@@ -264,10 +264,10 @@ $(document).ready(function() {
         //Widget one
     }
 
-    
+
     //Widget 2
     if($("#main2").length) {
-        
+
         var myChart2 = echarts.init(document.getElementById('main2'));
         option2 = {
             title: {
@@ -298,18 +298,18 @@ $(document).ready(function() {
                 }
             ]
         };
-        
+
         setInterval(function () {
             option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
             myChart.setOption(option, true);
-        },2000);    
+        },2000);
 
         myChart2.setOption(option2);
 
         setInterval(function () {
             option2.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
             myChart2.setOption(option2, true);
-        },2000);    
+        },2000);
     }
     //Widget 2
 
@@ -321,7 +321,7 @@ function toggle_sidebar() {
     $('#sidebar-toggle-btn').toggleClass('slide-in');
     $('.sidebar').toggleClass('shrink-sidebar');
     $('.content').toggleClass('expand-content');
-    
+
     //Resize inline dashboard charts
     $('#incomeBar canvas').css("width","100%");
     $('#expensesBar canvas').css("width","100%");
@@ -390,14 +390,14 @@ if($('.js-dynamic-state').length) {
     document.querySelector('.js-dynamic-disable').addEventListener('click', function() {
         switcheryDy.disable();
     });
-    
+
     document.querySelector('.js-dynamic-enable').addEventListener('click', function() {
         switcheryDy.enable();
     });
 }
 
 //Colored
-if($('.js-secondary').length) { 
+if($('.js-secondary').length) {
     var switchery = new Switchery(document.querySelector('.js-secondary'), { color: '#DDDDDD' });
     var switchery = new Switchery(document.querySelector('.js-primary'), { color: '#0073AA' });
     var switchery = new Switchery(document.querySelector('.js-success'), { color: '#29A744' });
@@ -415,3 +415,19 @@ if($('.js-small').length) {
 }
 
 /*===============Switchery ====================*/
+
+function handleSearchKeyPress(event, input) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+
+        if (validateSearch(input)) {
+            input.closest('.search-form').submit();
+        }
+    }
+}
+
+function handleSelectChange(url, selectElement) {
+    var selectedLimit = selectElement.value;
+    var newUrl = '/admin/items?limit=' + selectedLimit;
+    window.location.href = newUrl;
+}

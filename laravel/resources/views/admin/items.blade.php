@@ -22,22 +22,35 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="dataTables_length" id="example_length"><label>Show
-                                            <select id="limitItemsSet" aria-controls="example"
+                                            <select onchange="handleSelectChange('/admin/items', this)"
+                                                    id="limitItemsSet"
                                                     class="custom-select custom-select-sm form-control form-control-sm">
-                                                <option {{ $items['limit'] == 10 ? 'selected' : '' }} value="10">10</option>
-                                                <option {{ $items['limit'] == 25 ? 'selected' : '' }} value="25">25</option>
-                                                <option {{ $items['limit'] == 50 ? 'selected' : '' }} value="50">50</option>
-                                                <option {{ $items['limit'] == 100 ? 'selected' : '' }} value="100">100</option>
+                                                <option {{ $items['limit'] == 10 ? 'selected' : '' }} value="10">10
+                                                </option>
+                                                <option {{ $items['limit'] == 25 ? 'selected' : '' }} value="25">25
+                                                </option>
+                                                <option {{ $items['limit'] == 50 ? 'selected' : '' }} value="50">50
+                                                </option>
+                                                <option {{ $items['limit'] == 100 ? 'selected' : '' }} value="100">100
+                                                </option>
                                             </select> entries</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
-                                    <div id="example_filter" class="dataTables_filter"><label>Search:<input
+                                    <form action="/admin/items" method="GET" class="search-form">
+                                        <div id="example_filter" class="dataTables_filter">
+                                            <label>Search:
+                                                <input
                                                     type="search"
+                                                    name="search"
                                                     class="form-control form-control-sm"
                                                     placeholder=""
-                                                    aria-controls="example"></label>
-                                    </div>
+                                                    onkeypress="handleSearchKeyPress(event, this)"
+                                                    value="{{ request()->input('search') }}"
+                                                >
+                                            </label>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <div class="row">
@@ -84,8 +97,9 @@
 
                                 </div>
                                 <div class="col-sm-12 col-md-7">
-                                    <div style="padding-top: 14px;" class="dataTables_paginate paging_simple_numbers" id="example_paginate">
-                                         <?= buildAdminPaginator($items); ?>
+                                    <div style="padding-top: 14px;" class="dataTables_paginate paging_simple_numbers"
+                                         id="example_paginate">
+                                            <?= buildAdminPaginator($items); ?>
                                     </div>
                                 </div>
                             </div>

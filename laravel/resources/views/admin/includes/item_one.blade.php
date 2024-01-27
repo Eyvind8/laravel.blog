@@ -1,6 +1,14 @@
+@php use App\Models\Items; @endphp
 <tr role="row" class="odd">
     <td class="sorting_1">
-        Id: {{ $item->id }}<br>
+        Id: {{ $item->id }}
+
+        @if($item->status === Items::STATUS_ACTIVE)
+            <label style="margin: 0px" class="badge badge-success badge-pill">active</label>
+        @else
+            <label style="margin: 0px" class="badge badge-warning badge-pill">new</label>
+        @endif
+        <br>
         {{ \Carbon\Carbon::parse($item->created)->format('Y-m-d H:i') }}<br>
         Views: {{ $item->views }}<br>
         Likes: {{ $item->likes }}
