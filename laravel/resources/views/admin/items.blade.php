@@ -60,12 +60,12 @@
                                            aria-describedby="example_info">
                                         <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1"
+                                            <th class="sorting_asc" aria-controls="example" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 style="width: 10px; padding-right: 0px;">
                                                 Data
                                             </th>
-                                            <th tabindex="0" aria-controls="example" rowspan="1"
+                                            <th aria-controls="example" rowspan="1"
                                                 colspan="1"
                                                 style="width: 373px;">Content / Tags
                                             </th>

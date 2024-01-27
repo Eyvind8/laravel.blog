@@ -1,6 +1,6 @@
 @php use App\Models\Items; @endphp
-<tr role="row" class="odd">
-    <td class="sorting_1">
+<tr role="row">
+    <td>
         Id: {{ $item->id }}
 
         @if($item->status === Items::STATUS_ACTIVE)
