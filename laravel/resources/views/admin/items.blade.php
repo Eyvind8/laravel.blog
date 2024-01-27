@@ -59,17 +59,15 @@
                                            role="grid"
                                            aria-describedby="example_info">
                                         <thead>
-                                        <tr role="row">
-                                            <th class="sorting_asc" aria-controls="example" rowspan="1"
-                                                colspan="1" aria-sort="ascending"
-                                                style="width: 10px; padding-right: 0px;">
-                                                Data
-                                            </th>
-                                            <th aria-controls="example" rowspan="1"
-                                                colspan="1"
-                                                style="width: 373px;">Content / Tags
-                                            </th>
-                                        </tr>
+                                            <tr role="row">
+                                                <th data-column="created" class="sorting_{{ $items['sort_dir'] }}" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending"
+                                                    style="width: 10px; padding-right: 0px;" onclick="changeSorting('/admin/items', 'created')">
+                                                    Data
+                                                </th>
+                                                <th aria-controls="example" rowspan="1" colspan="1" style="width: 373px;">
+                                                    Content / Tags
+                                                </th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($items['list'] as $item)

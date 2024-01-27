@@ -6,16 +6,14 @@ use App\Component\Pagination\Filter;
 use App\Http\Requests\FormRequest;
 use App\Models\Items;
 use App\Repositories\ItemsRepository;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
-class ItemsController
+class ItemsControllerRootController extends AdminRootController
 {
     function show(FormRequest $request, ItemsRepository $itemsRepository)
     {
-        $requestData = $request->all();
-        $requestData['limit'] = $request->input('limit', 10);
-        $requestData['sortField'] = $request->input('sortField', 'created');
-        $requestData['sortDirection'] = $request->input('sortDirection', 'desc');
+        $requestData = $this->getSessionPaginatorData($request);
         $request->merge($requestData);
 
         $items = $itemsRepository->list(new Filter($request->all()))->toArray();
@@ -28,4 +26,6 @@ class ItemsController
 
         return view('admin/items')->with('items', $items);
     }
+
+
 }

@@ -428,6 +428,15 @@ function handleSearchKeyPress(event, input) {
 
 function handleSelectChange(url, selectElement) {
     var selectedLimit = selectElement.value;
-    var newUrl = '/admin/items?limit=' + selectedLimit;
+    var newUrl = url + '?limit=' + selectedLimit;
+    window.location.href = newUrl;
+}
+
+function changeSorting(url, column) {
+    var clickedTh = $('th[data-column="' + column + '"]');
+    var sortingOrder = $(clickedTh).hasClass('sorting_asc') ? 'desc' : 'asc';
+
+    var newUrl = url + '?sort=' + column + '&sort_dir=' + sortingOrder;
+    alert(newUrl);
     window.location.href = newUrl;
 }
