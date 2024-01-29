@@ -37,8 +37,8 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
-                                    <form action="/admin/items" method="GET" class="search-form">
-                                        <div id="example_filter" class="dataTables_filter">
+                                    <div id="example_filter" class="dataTables_filter">
+                                        <form action="/admin/items" method="GET" class="search-form">
                                             <label>Search:
                                                 <input
                                                     type="search"
@@ -49,8 +49,8 @@
                                                     value="{{ request()->input('search') }}"
                                                 >
                                             </label>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -59,15 +59,20 @@
                                            role="grid"
                                            aria-describedby="example_info">
                                         <thead>
-                                            <tr role="row">
-                                                <th data-column="created" class="sorting_{{ $items['sort_dir'] }}" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending"
-                                                    style="width: 10px; padding-right: 0px;" onclick="changeSorting('/admin/items', 'created')">
-                                                    Data
-                                                </th>
-                                                <th aria-controls="example" rowspan="1" colspan="1" style="width: 373px;">
-                                                    Content / Tags
-                                                </th>
-                                            </tr>
+                                        <tr role="row">
+                                            <th data-column="created" class="sorting_{{ $items['sort_dir'] }}"
+                                                aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending"
+                                                style="width: 10px; padding-right: 0px;"
+                                                onclick="changeSorting('/admin/items', 'created')">
+                                                Data
+                                            </th>
+                                            <th aria-controls="example" rowspan="1" colspan="1" style="display: flex; justify-content: space-between; align-items: center;">
+                                                Content / Tags
+                                                <div style="text-align: right;">
+                                                    <a href="#"><img width="26px" src="/img/admin/plus.png" /></a>
+                                                </div>
+                                            </th>
+                                        </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($items['list'] as $item)
