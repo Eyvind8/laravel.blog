@@ -30,6 +30,7 @@
 <script src="/js/admin/jsgrid.min.js"></script>
 <script src="/js/admin/jsgrid-demo.js"></script>
 <script src="/js/admin/alertify.min.js"></script>
+<script src="/js/admin/bootstrap-tagsinput.min.js"></script>
 
 <!--Custom Js Script-->
 <script src="/js/admin/custom.js"></script>
