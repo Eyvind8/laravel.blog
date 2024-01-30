@@ -19,7 +19,7 @@
 
                     <div class="table-responsive">
                         <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                            <div class="row">
+                            <div class="row container">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="dataTables_length" id="example_length"><label>Show
                                             <select onchange="handleSelectChange('/admin/items', this)"
@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="margin: 30px 0">
+                            <div class="row container" style="margin: 30px 0; background-color: rgba(0,0,0,.05); padding: 20px;">
                                 <div class="col-sm-12">
                                     <form>
                                         <div class="mb-3 row col-sm-12">
@@ -65,11 +65,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm">
-                                                <h6 class="mb-2">Tag inputs</h6>
-                                                <p>Gives you a possibility to get many values separated by coma</p>
-
-                                                <div class="bootstrap-tagsinput"><span class="tag label label-info">Amsterdam<span data-role="remove"></span></span> <span class="tag label label-info">Washington<span data-role="remove"></span></span> <span class="tag label label-info">Sydney<span data-role="remove"></span></span> <span class="tag label label-info">Beijing<span data-role="remove"></span></span> <span class="tag label label-info">Cairo<span data-role="remove"></span></span> <input type="text" placeholder="Add tags"></div><input type="text" class="" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" placeholder="Add tags" style="display: none;">
+                                            <label for="contentTextarea"
+                                                   class="col-sm-2 col-form-label">Tags:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" id="tags-input" data-role="tagsinput" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="row">

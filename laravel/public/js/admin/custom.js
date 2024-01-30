@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+    // Добавление тега
+//            $('#add-tag-button').on('click', function() {
+//                var tag = prompt('Enter a tag:');
+//                if (tag) {
+//                    $('#tags-input').tagsinput('add', tag);
+//                }
+//            });
+
+
     /*==============Page Loader=======================*/
 
     $(".loader-wrapper").fadeOut("slow");
