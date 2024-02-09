@@ -53,55 +53,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row container" style="margin: 30px 0; background-color: rgba(0,0,0,.05); padding: 20px;">
-                                <div class="col-sm-12">
-                                    <form>
-                                        <div class="mb-3 row col-sm-12">
-                                            <label for="contentTextarea"
-                                                   class="col-sm-2 col-form-label">Item:</label>
-                                            <div class="col-sm-10">
-                                                <textarea class="form-control" id="contentTextarea" rows="3"
-                                                          style="width: 100%;"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="contentTextarea"
-                                                   class="col-sm-2 col-form-label">Tags:</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" id="tags-input" data-role="tagsinput" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="checkbox" checked class="form-check-input" id="activeCheckbox">
-                                                    <label class="form-check-label" for="activeCheckbox">Active</label>
-                                                </div>
-                                            </div>
+                            @include('admin.includes.item_create')
 
-                                            <div class="col-sm-3">
-                                                Created:
-                                                <input type="text" class="form-control" id="createdInput"
-                                                       value="{{ date('Y-m-d H:i:s') }}">
-                                            </div>
-
-                                            <div class="col-sm-3">
-                                                Views:
-                                                <input type="number" class="form-control" id="viewsInput" value="1"
-                                                       placeholder="Enter views">
-                                            </div>
-
-                                            <div class="col-sm-3">
-                                                Likes:
-                                                <input type="number" class="form-control" id="likesInput" value="0"
-                                                       placeholder="Enter likes">
-                                            </div>
-                                        </div>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -120,7 +73,7 @@
                                             style="display: flex; justify-content: space-between; align-items: center;">
                                             Content / Tags
                                             <div style="text-align: right;">
-                                                <a href="#"><img width="26px" src="/img/admin/plus.png"/></a>
+                                                    <a href="#" onclick="$('#create-item-js').slideToggle('slow');"><img width="26px" src="/img/admin/plus.png"/></a>
                                             </div>
                                         </th>
                                     </tr>

@@ -26,7 +26,10 @@ class SiteSetupServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Добавим переменную $tags со всеми тегами во все представления
-        view()->share('tags', Tag::all());
+        $tags = Tag::all()->sortBy(function($tag) {
+            return [$tag->parent_id, $tag->name];
+        });
+
+        view()->share('tags', $tags);
     }
 }
