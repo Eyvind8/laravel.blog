@@ -21,7 +21,12 @@ class ItemTag extends Model
     /**
      * @var string
      */
-    protected $table = 'item_tag'; // Указываем имя таблицы, если оно отличается от соглашения Eloquent
+    protected $table = 'item_tag';
+
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * @var string[]
@@ -31,20 +36,4 @@ class ItemTag extends Model
         'item_id',
         'tag_id'
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function item()
-    {
-        return $this->belongsTo(Items::class, 'item_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function tag()
-    {
-        return $this->belongsTo(Tag::class, 'tag_id', 'id');
-    }
 }

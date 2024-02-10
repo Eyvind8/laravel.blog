@@ -14,4 +14,21 @@ final class TagRepository extends BaseRepository
     {
         return Tag::class;
     }
+
+    /**
+     * @param string $tagName
+     * @return int
+     */
+    public function findOrCreateTag(string $tagName): int
+    {
+        $tag = Tag::where('name', $tagName)->first();
+
+        if ($tag) {
+            return $tag->id;
+        }
+
+        $newTag = Tag::create(['name' => $tagName, 'active' => 1]);
+
+        return $newTag->id;
+    }
 }

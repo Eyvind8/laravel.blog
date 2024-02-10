@@ -79,6 +79,16 @@ class Items extends Model implements ItemsInterface
     {
         parent::boot();
 
+        // Проверка уникальности content перед сохранением
+        static::saving(function ($model) {
+            $existingItem = static::where('content', $model->content)->first();
+
+            if ($existingItem && $existingItem->id !== $model->id) {
+                // Если уже существует запись с таким content, и это не текущая запись, отменить сохранение
+                return false;
+            }
+        });
+
         //static::addGlobalScope(new ItemsActiveScope());
 
         /**

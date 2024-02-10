@@ -16,6 +16,11 @@ final class ItemsRepository extends BaseRepository
         return Items::class;
     }
 
+    public function create(array $data)
+    {
+        return Items::create($data);
+    }
+
     public function getTagsForItem($itemId)
     {
         return DB::table('item_tag')
