@@ -73,7 +73,9 @@
                                             style="display: flex; justify-content: space-between; align-items: center;">
                                             Content / Tags
                                             <div style="text-align: right;">
-                                                    <a href="#" onclick="$('#create-item-js').slideToggle('slow');"><img width="26px" src="/img/admin/plus.png"/></a>
+                                                <a title="Create item" href="#" onclick="$('#create-item-js').slideToggle('slow');">
+                                                    <img width="26px" src="/img/admin/plus.png"/>
+                                                </a>
                                             </div>
                                         </th>
                                     </tr>

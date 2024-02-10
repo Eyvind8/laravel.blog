@@ -56,15 +56,13 @@ class ItemsController extends AdminRootController
     }
 
     /**
-     * @param FormRequest $request
+     * @param $itemId
      * @param ItemService $itemService
      */
-    public function remove(FormRequest $request, ItemService $itemService)
+    public function remove($itemId, ItemService $itemService)
     {
-        $itemId = $request->get('item_id');
-
         if ($itemService->remove($itemId)) {
-            return redirect('/admin/items');;
+            return response()->json(['result' => true], 200);
         }
 
         return response()->json(['error' => 'Failed to delete item'], 400);

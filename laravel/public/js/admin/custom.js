@@ -323,6 +323,64 @@ $(document).ready(function() {
     //Widget 2
 
     /*============Echarts widget ===================== */
+
+    /*=================== CUSTOM JS ================== */
+
+    $('.delete-item').on('click', function(event) {
+        event.preventDefault();
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this item!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                var itemId = $(this).data('item-id');
+
+                $.ajax({
+                    url: '/admin/items/' + itemId,
+                    type: 'DELETE',
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.result === true) {
+                            $('#item-js-' + itemId).remove();
+                            alertify.set('notifier','position', 'top-right');
+                            alertify.success('Success remove item.', 'custom', 3, function(){}).dismissOthers();
+                        } else {
+                            alertify.set('notifier','position', 'top-right');
+                            alertify.warning('Failed to delete item', 'custom', 3, function(){}).dismissOthers();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alertify.set('notifier','position', 'top-right');
+                        alertify.error('Error AJAX-request: ' + status + ', ' + error, 'custom', 3, function(){}).dismissOthers();
+                    }
+                });
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 /*========== Toggle Sidebar width ============ */
@@ -462,3 +520,4 @@ function changeSorting(url, column) {
     var newUrl = url + '?sort=' + column + '&sort_dir=' + sortingOrder;
     window.location.href = newUrl;
 }
+

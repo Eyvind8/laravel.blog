@@ -56,13 +56,10 @@ class TagService
         $tagIds = $this->itemTagRepository->getTagIdsByItemId($itemId);
 
         if (!$tagIds) {
-            return false;
+            return true;
         }
 
-        // удаляем связи
-        if (!$this->itemTagRepository->deleteByItemId($itemId)) {
-            return false;
-        }
+        $this->itemTagRepository->deleteByItemId($itemId);
 
         // удаляем непривязанные теги
         return $this->deleteUnusedTags($tagIds);

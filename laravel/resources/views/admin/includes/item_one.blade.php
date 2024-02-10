@@ -1,5 +1,5 @@
 @php use App\Models\Items; @endphp
-<tr role="row" class="items" id="{{ $item->id }}">
+<tr role="row" class="items" id="item-js-{{ $item->id }}">
     <td>
         Id: {{ $item->id }}
 
@@ -12,11 +12,12 @@
         @endif
 
         <br>
-        <input type="text" style="width: 125px;" value="{{ \Carbon\Carbon::parse($item->created)->format('Y-m-d H:i') }}" /><br>
+        <input type="text" style="width: 125px;"
+               value="{{ \Carbon\Carbon::parse($item->created)->format('Y-m-d H:i') }}"/><br>
         Views: {{ $item->views }}<br>
         Likes: {{ $item->likes }}
     </td>
-    <td>
+    <td style="position: relative;">
         <textarea rows="{{ substr_count($item['content'], "\n") + 1 }}"
                   style="width: 100%; border: none;">{{ Str::ucfirst($item['content']) }}</textarea>
 
@@ -29,6 +30,12 @@
                     </a>
                 </span>
             @endforeach
+
+            <span style="position: absolute; bottom: 5px; right: 5px;">
+                <a href="#" class="delete-item" data-item-id="{{ $item->id }}" title="Delete item" style="color: #797979;">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </span>
         </div>
     </td>
 </tr>
