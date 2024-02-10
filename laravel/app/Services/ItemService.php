@@ -20,7 +20,8 @@ class ItemService
      * @param ItemsRepository $itemsRepository
      * @param TagService $tagService
      */
-    public function __construct(ItemsRepository $itemsRepository, TagService $tagService)
+    public function __construct(
+        ItemsRepository $itemsRepository, TagService $tagService)
     {
         $this->itemsRepository = $itemsRepository;
         $this->tagService = $tagService;
@@ -41,5 +42,18 @@ class ItemService
         }
 
         return !$itemTags || $this->tagService->saveItemTags($itemId, $itemTags);
+    }
+
+    /**
+     * @param int $itemId
+     * @return bool
+     */
+    public function remove(int $itemId): bool
+    {
+        if (!$this->itemsRepository->delete($itemId)) {
+            return false;
+        }
+
+        return $this->tagService->removeItemRelations($itemId);
     }
 }

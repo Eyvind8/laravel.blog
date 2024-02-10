@@ -28,12 +28,17 @@ class ItemsController extends AdminRootController
         return view('admin/items')->with('items', $items);
     }
 
+    /**
+     * @param FormRequest $request
+     * @param ItemService $itemService
+     */
     public function add(FormRequest $request, ItemService $itemService)
     {
         $dataRequest = $request->all();
+        $status = $dataRequest['status'] === 'on' ? Items::STATUS_ACTIVE : Items::STATUS_NEW;
 
         $dataItem = [
-            'status' => $dataRequest['status'] === 'on' ? Items::STATUS_ACTIVE : Items::STATUS_NEW,
+            'status' => $status,
             'content' => trim($dataRequest['content']),
             'views' => $dataRequest['views'],
             'likes' => $dataRequest['likes'],
@@ -43,10 +48,26 @@ class ItemsController extends AdminRootController
 
         $tagsItem = explode(',', $dataRequest['tags']);
 
-        $item = $itemService->createItem($dataItem, $tagsItem);
+        if ($itemService->createItem($dataItem, $tagsItem)) {
+            return redirect('/admin/items');;
+        }
 
+        return response()->json(['error' => 'Failed to save item'], 400);
+    }
 
-        return response()->json($item, 201);
+    /**
+     * @param FormRequest $request
+     * @param ItemService $itemService
+     */
+    public function remove(FormRequest $request, ItemService $itemService)
+    {
+        $itemId = $request->get('item_id');
+
+        if ($itemService->remove($itemId)) {
+            return redirect('/admin/items');;
+        }
+
+        return response()->json(['error' => 'Failed to delete item'], 400);
     }
 
 }

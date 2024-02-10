@@ -10,7 +10,7 @@ class TagService
     /**
      * @var TagRepository
      */
-    protected $tagRepository;
+    private $tagRepository;
 
     /**
      * @var ItemTagRepository
@@ -47,6 +47,44 @@ class TagService
         return true;
     }
 
+    /**
+     * @param int $itemId
+     * @return bool
+     */
+    public function removeItemRelations(int $itemId): bool
+    {
+        $tagIds = $this->itemTagRepository->getTagIdsByItemId($itemId);
+
+        if (!$tagIds) {
+            return false;
+        }
+
+        // удаляем связи
+        if (!$this->itemTagRepository->deleteByItemId($itemId)) {
+            return false;
+        }
+
+        // удаляем непривязанные теги
+        return $this->deleteUnusedTags($tagIds);
+    }
+
+    /**
+     * @param array $tagIds
+     * @return bool
+     */
+    public function deleteUnusedTags(array $tagIds): bool
+    {
+        // Находим теги, которые не связаны с items
+        $unusedTags = $this->tagRepository->getUnusedTags($tagIds);
+
+        // Удаляем эти теги
+        foreach ($unusedTags as $tagId) {
+            $this->tagRepository->delete($tagId);
+        }
+
+        return true;
+    }
+
 
     /**
      * @param string $tagName
@@ -56,6 +94,5 @@ class TagService
     {
         return $this->tagRepository->findOrCreateTag($tagName);
     }
-
 
 }
