@@ -35,3 +35,14 @@
 <!--Custom Js Script-->
 <script src="/js/admin/custom.js"></script>
 <!--Custom Js Script-->
+
+<?php
+
+$currentUrl = request()->url();
+$lastSegment = basename(parse_url($currentUrl, PHP_URL_PATH));
+$scriptPath = public_path("js/admin/panel/{$lastSegment}.js");
+
+if (file_exists($scriptPath)) {
+    echo "<script src='" . asset("js/admin/panel/{$lastSegment}.js") . "'></script>";
+}
+

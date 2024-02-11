@@ -2228,3 +2228,19 @@ span.tag.label.label-info {
         margin-top: 2.7rem !important;
     }
 }
+
+.bootstrap-tagsinput {
+    width: 95%;
+}
+
+ #editDialog {
+     display: none;
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: white;
+     padding: 20px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     z-index: 9999;
+ }
