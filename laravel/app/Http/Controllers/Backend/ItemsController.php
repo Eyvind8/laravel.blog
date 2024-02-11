@@ -7,13 +7,18 @@ use App\Http\Requests\FormRequest;
 use App\Models\Items;
 use App\Repositories\ItemsRepository;
 use App\Services\ItemService;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Session;
+use App\Services\TranslationService;
 
 class ItemsController extends AdminRootController
 {
     public function show(FormRequest $request, ItemsRepository $itemsRepository)
     {
+        $textToTranslate = 'Боксёра может обидеть каждый, но не каждый успеет извиниться';
+        $translatedText = (new TranslationService())->translateFromRussianToUkrainian($textToTranslate);
+        echo 'Исходный текст: ' . $textToTranslate . '<br>';
+        echo 'Переведенный текст: ' . $translatedText ;
+
+
         $requestData = $this->getSessionPaginatorData($request);
         $request->merge($requestData);
 
