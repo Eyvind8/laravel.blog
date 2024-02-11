@@ -11,7 +11,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [ItemsController::class, 'show']);
+    Route::get('/', function () {
+        return redirect('/admin/items');
+    });
+    Route::get('/items', [ItemsController::class, 'show']);
 
     // Auth routes
     Route::withoutMiddleware(['admin'])->group(function () {

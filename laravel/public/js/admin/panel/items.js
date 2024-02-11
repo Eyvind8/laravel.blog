@@ -1,23 +1,35 @@
 var currentTagVar;
 
-$(document).ready(function() {
+$(document).ready(function()
+{
+    // begin двойной клик по слову в текстареа добавлет слово в тег
+    var textarea = document.getElementById('contentTextarea');
+    var tagsInput = $('#tags-input');
 
-//    $(document).on('dblclick', '.bootstrap-tagsinput .tag', function () {
-//        var currentTag = $(this).text().trim();
-//        var newTag = prompt('Edit tag:', currentTag);
-//
-//        if (newTag !== null) {
-//            // Удаляем текущий тег и добавляем новый тег
-//            $('#tags-input').tagsinput('remove', currentTag);
-//            $('#tags-input').tagsinput('add', newTag);
-//        }
-//    });
+    textarea.addEventListener('dblclick', function () {
+        var selectedWord = getSelectedWord();
+        if (selectedWord) {
+            addWordToTagsInput(selectedWord);
+        }
+    });
 
+    function getSelectedWord() {
+        var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+        return selectedText.trim();
+    }
+
+    function addWordToTagsInput(word) {
+        tagsInput.tagsinput('add', word);
+    }
+    // end
+
+    // по двойному клику на теге открівается диалоговое окно для редактирования
     $(document).on('dblclick', '.bootstrap-tagsinput .tag', function () {
         var currentTag = $(this).text().trim();
         openEditDialog(currentTag);
     });
 
+    // удаление єлемента
     $('.delete-item').on('click', function(event) {
         event.preventDefault();
 
@@ -56,6 +68,8 @@ $(document).ready(function() {
     });
 });
 
+
+/* ===================  EDIT TAG ================= */
 function handleKeyPressEditTag(event) {
     if (event.key === 'Enter') {
         saveEditedTag();
@@ -80,25 +94,6 @@ function closeEditDialog() {
     document.getElementById('editDialog').style.display = 'none';
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    var textarea = document.getElementById('contentTextarea');
-    var tagsInput = $('#tags-input');
-
-    textarea.addEventListener('dblclick', function () {
-        var selectedWord = getSelectedWord();
-        if (selectedWord) {
-            addWordToTagsInput(selectedWord);
-        }
-    });
-
-    function getSelectedWord() {
-        var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
-        return selectedText.trim();
-    }
-
-    function addWordToTagsInput(word) {
-        tagsInput.tagsinput('add', word);
-    }
-});
+/* ===================  EDIT TAG END ================= */
 
 

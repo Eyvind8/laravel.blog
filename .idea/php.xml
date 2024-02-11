@@ -127,6 +127,7 @@
       <path value="$PROJECT_DIR$/laravel/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/laravel/vendor/barryvdh/laravel-debugbar" />
       <path value="$PROJECT_DIR$/laravel/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/laravel/vendor/stichoza/google-translate-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

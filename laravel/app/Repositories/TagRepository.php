@@ -22,6 +22,7 @@ final class TagRepository extends BaseRepository
      */
     public function findOrCreateTag(string $tagName): int
     {
+        $tagName = mb_strtolower($tagName, 'UTF-8');
         $tag = Tag::where('name', $tagName)->first();
 
         if ($tag) {

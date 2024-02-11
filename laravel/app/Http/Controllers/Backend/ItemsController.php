@@ -13,10 +13,10 @@ class ItemsController extends AdminRootController
 {
     public function show(FormRequest $request, ItemsRepository $itemsRepository)
     {
-        $textToTranslate = 'Боксёра может обидеть каждый, но не каждый успеет извиниться';
-        $translatedText = (new TranslationService())->translateFromRussianToUkrainian($textToTranslate);
-        echo 'Исходный текст: ' . $textToTranslate . '<br>';
-        echo 'Переведенный текст: ' . $translatedText ;
+//        $textToTranslate = 'Боксёра может обидеть каждый, но не каждый успеет извиниться';
+//        $translatedText = (new TranslationService())->translateFromRussianToUkrainian($textToTranslate);
+//        echo 'Исходный текст: ' . $textToTranslate . '<br>';
+//        echo 'Переведенный текст: ' . $translatedText ;
 
 
         $requestData = $this->getSessionPaginatorData($request);
