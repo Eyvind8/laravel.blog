@@ -1,9 +1,11 @@
 $(document).ready(function() {
-    // Обработчик двойного клика для добавления слова в тег
-    $(document).on('dblclick', '.taggable-input', function () {
-        var selectedWord = getSelectedWord();
+    // по двойному клику добавляется слово в тег
+    $(document).on('dblclick', '.content-textarea', function () {
+        var selectedWord = getSelectedWord(this);
+
         if (selectedWord) {
-            addWordToTagsInput(selectedWord, $(this));
+            var tagsInput = $(this).closest('.row-item').find('.taggable-input');
+            addWordToTagsInput(selectedWord, tagsInput);
         }
     });
 
@@ -44,50 +46,11 @@ $(document).ready(function() {
             }
         });
     });
-
-    // удаление єлемента
-        $('.delete-item').on('click', function(event) {
-            event.preventDefault();
-
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this item!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    var itemId = $(this).data('item-id');
-
-                    $.ajax({
-                        url: '/admin/items/' + itemId,
-                        type: 'DELETE',
-                        dataType: 'json',
-                        success: function(data) {
-                            if (data.result === true) {
-                                $('#item-js-' + itemId).remove();
-                                alertify.set('notifier','position', 'top-right');
-                                alertify.success('Success remove item.', 'custom', 3, function(){}).dismissOthers();
-                            } else {
-                                alertify.set('notifier','position', 'top-right');
-                                alertify.warning('Failed to delete item', 'custom', 3, function(){}).dismissOthers();
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            alertify.set('notifier','position', 'top-right');
-                            alertify.error('Error AJAX-request: ' + status + ', ' + error, 'custom', 3, function(){}).dismissOthers();
-                        }
-                    });
-                }
-            });
-        });
 });
 
 // Определение выбранного слова в текстареа
-function getSelectedWord() {
-    var textarea = $('.taggable-input:focus');
-    var selectedText = textarea.val().substring(textarea[0].selectionStart, textarea[0].selectionEnd);
+function getSelectedWord(textarea) {
+    var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
     return selectedText.trim();
 }
 
@@ -126,9 +89,9 @@ function saveEditedTag() {
     closeEditDialog();
 }
 
-
 // Закрытие диалогового окна редактирования
 function closeEditDialog() {
     $('#editDialog').modal('hide');
 }
+
 

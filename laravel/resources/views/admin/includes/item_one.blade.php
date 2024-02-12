@@ -17,8 +17,8 @@
         Views: {{ $item->views }}<br>
         Likes: {{ $item->likes }}
     </td>
-    <td style="position: relative;">
-        <textarea rows="{{ substr_count($item['content'], "\n") + 1 }}"
+    <td class="row-item" style="position: relative;">
+        <textarea class="content-textarea" rows="{{ substr_count($item['content'], "\n") + 1 }}"
                   style="width: 100%; border: none;">{{ Str::ucfirst($item['content']) }}</textarea>
 
         <div class="tags-item-block" style="margin-top: 15px;">

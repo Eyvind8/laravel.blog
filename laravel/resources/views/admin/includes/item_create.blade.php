@@ -6,7 +6,7 @@
 </div>
 
 <div id="create-item-js" class="row container" style="display: none1; margin: 30px 0; background-color: rgba(0,0,0,.05); padding: 20px;">
-    <div class="col-sm-12">
+    <div class="col-sm-12 row-item">
         <form action="/admin/items/add" method="post">
             <div class="row" style="padding-left: 15px;">
                 <h5>Create item:</h5>
@@ -14,7 +14,7 @@
             <div class="mb-3 row col-sm-12">
                 <label for="contentTextarea" class="col-sm-2 col-form-label" style="padding-left: 0px">Item:</label>
                 <div class="col-sm-10">
-                    <textarea name="content" class="form-control" id="contentTextarea" rows="3"
+                    <textarea name="content" class="form-control content-textarea" rows="3"
                               style="width: 100%;">Завдавати добро і наносити користь</textarea>
                 </div>
             </div>
