@@ -1,11 +1,11 @@
 <div id="editDialog">
     <label for="editTagInput">Edit Tag:</label>
-    <input type="text" id="editTagInput" onkeypress="handleKeyPressEditTag(event)"> &nbsp;&nbsp;
+    <input type="text" id="edit-tag-input" onkeypress="handleKeyPressEditTag(event)"> &nbsp;&nbsp;
     <button onclick="saveEditedTag()" class="btn btn-primary">Save</button>
     <button onclick="closeEditDialog()" class="btn btn-secondary">Cancel</button>
 </div>
 
-<div id="create-item-js" class="row container" style="display: none; margin: 30px 0; background-color: rgba(0,0,0,.05); padding: 20px;">
+<div id="create-item-js" class="row container" style="display: none1; margin: 30px 0; background-color: rgba(0,0,0,.05); padding: 20px;">
     <div class="col-sm-12">
         <form action="/admin/items/add" method="post">
             <div class="row" style="padding-left: 15px;">
@@ -15,13 +15,13 @@
                 <label for="contentTextarea" class="col-sm-2 col-form-label" style="padding-left: 0px">Item:</label>
                 <div class="col-sm-10">
                     <textarea name="content" class="form-control" id="contentTextarea" rows="3"
-                              style="width: 100%;"></textarea>
+                              style="width: 100%;">Завдавати добро і наносити користь</textarea>
                 </div>
             </div>
-            <div class="row">
+            <div class="row tags-item-block">
                 <label for="contentTextarea" class="col-sm-2 col-form-label">Tags:</label>
                 <div class="col-sm-10">
-                    <input type="text" name="tags" id="tags-input" data-role="tagsinput" class="form-control"/>
+                    <input type="text" id="create-item-tags-input" name="tags" data-role="tagsinput" class="form-control taggable-input"/>
                 </div>
             </div>
             <div class="row">

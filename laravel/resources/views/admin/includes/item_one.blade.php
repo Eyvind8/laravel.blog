@@ -21,7 +21,10 @@
         <textarea rows="{{ substr_count($item['content'], "\n") + 1 }}"
                   style="width: 100%; border: none;">{{ Str::ucfirst($item['content']) }}</textarea>
 
-        <div class="tag" style="margin-top: 15px;">
+        <div class="tags-item-block" style="margin-top: 15px;">
+            <?php $tags = collect($item->getTags())->pluck('name')->all(); ?>
+            <input id="tags-input-{{ $item->id }}" type="text" value="<?= implode(',', $tags) ?>" name="tags" data-role="tagsinput" class="form-control taggable-input"/>
+            <br>
             @foreach ($item->getTags() as $tag)
                 <span>
                     <a href="/admin/items?tag={{ $tag->id }}" style="color: #797979; margin-right: 10px">
