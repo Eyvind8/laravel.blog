@@ -1,4 +1,45 @@
 $(document).ready(function() {
+    $(document).on('click', '.save-item', function(event) {
+        event.preventDefault();
+
+        // Получаем ID элемента из атрибута data-item-id
+        var itemId = $(this).data('item-id');
+
+        // Находим соответствующий блок элемента по ID
+        var itemBlock = $('#item-js-' + itemId);
+
+        // Получаем значения из .content-textarea, .taggable-input, .item-create
+        var contentTextareaValue = itemBlock.find('.content-textarea').val();
+        var tagsInputValue = itemBlock.find('.taggable-input').val();
+        var itemCreateValue = itemBlock.find('.item-create').val();
+        var statusCheckbox = itemBlock.find('input[name="status"]').is(':checked') ? 'active' : 'new';
+
+        // Формируем данные для отправки
+        var postData = {
+            content: contentTextareaValue,
+            tags: tagsInputValue,
+            itemCreate: itemCreateValue,
+            status: statusCheckbox
+        };
+
+        // Отправляем AJAX-запрос
+        $.ajax({
+            url: '/admin/items/' + itemId,
+            type: 'PUT',
+            dataType: 'json',
+            data: postData,
+            success: function(data) {
+                // Обработка успешного ответа
+                alertify.success('Success update item');
+            },
+            error: function(xhr, status, error) {
+                // Обработка ошибки
+                console.error('Error:', status, error);
+                alertify.warning('Failed to update item');
+            }
+        });
+    });
+
     // по двойному клику добавляется слово в тег
     $(document).on('dblclick', '.content-textarea', function () {
         var selectedWord = getSelectedWord(this);

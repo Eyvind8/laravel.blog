@@ -12,7 +12,7 @@
         @endif
 
         <br>
-        <input type="text" style="width: 125px;"
+        <input class="item-create" type="text" style="width: 125px;"
                value="{{ \Carbon\Carbon::parse($item->created)->format('Y-m-d H:i') }}"/><br>
         Views: {{ $item->views }}<br>
         Likes: {{ $item->likes }}
@@ -23,7 +23,8 @@
 
         <div class="tags-item-block" style="margin-top: 15px;">
             <?php $tags = collect($item->getTags())->pluck('name')->all(); ?>
-            <input id="tags-input-{{ $item->id }}" type="text" value="<?= implode(',', $tags) ?>" name="tags" data-role="tagsinput" class="form-control taggable-input"/>
+            <input id="tags-input-{{ $item->id }}" type="text" value="<?= implode(',', $tags) ?>" name="tags"
+                   data-role="tagsinput" class="form-control taggable-input"/>
             <br>
             @foreach ($item->getTags() as $tag)
                 <span>
@@ -34,8 +35,14 @@
                 </span>
             @endforeach
 
-            <span style="position: absolute; bottom: 5px; right: 5px;">
-                <a href="#" class="delete-item" data-item-id="{{ $item->id }}" title="Delete item" style="color: #797979;">
+            <span style="position: absolute; bottom: 5px; right: 13px;">
+                <a href="#" class="save-item" data-item-id="{{ $item->id }}" title="Save item"
+                   style="color: #797979; margin-left: 10px; cursor: pointer;">
+                    <i class="fa fa-save"></i>
+                </a>
+
+                <a href="#" class="delete-item" data-item-id="{{ $item->id }}" title="Delete item"
+                   style="color: #797979; cursor: pointer;">
                     <i class="fa fa-trash"></i>
                 </a>
             </span>
