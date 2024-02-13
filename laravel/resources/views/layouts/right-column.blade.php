@@ -110,7 +110,9 @@
             <ul class="tag">
                 @foreach ($tags as $tag)
                     <li>
-                        <a href="/?tag={{ $tag->id }}" class="{{ $tag->parent_id == 0 ? 'border-green' : '' }}">
+                        <a href="/?tag={{ $tag->id }}"
+                          <?php /* class="{{ $tag->parent_id == 0 ? 'border-green' : '' }}" */ ?>
+                        >
                             <i class="fa fa-tags pr-5"></i>
                             {{ $tag->name }}
                         </a>

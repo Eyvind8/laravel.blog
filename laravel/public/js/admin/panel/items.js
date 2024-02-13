@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(function()
+{
     $(document).on('click', '.save-item', function(event) {
         event.preventDefault();
 
@@ -18,7 +19,7 @@ $(document).ready(function() {
         var postData = {
             content: contentTextareaValue,
             tags: tagsInputValue,
-            itemCreate: itemCreateValue,
+            created: itemCreateValue,
             status: statusCheckbox
         };
 
@@ -29,13 +30,15 @@ $(document).ready(function() {
             dataType: 'json',
             data: postData,
             success: function(data) {
-                // Обработка успешного ответа
-                alertify.success('Success update item');
+                if (data.result === true) {
+                    $('#item-js-' + itemId).remove();
+                    alertify.success('Success update item');
+                } else {
+                    alertify.warning('Failed to update item');
+                }
             },
             error: function(xhr, status, error) {
-                // Обработка ошибки
-                console.error('Error:', status, error);
-                alertify.warning('Failed to update item');
+                alertify.error('Error AJAX-request: ' + status + ', ' + error);
             }
         });
     });
@@ -75,7 +78,7 @@ $(document).ready(function() {
                     success: function(data) {
                         if (data.result === true) {
                             $('#item-js-' + itemId).remove();
-                            alertify.success('Success remove item.');
+                            alertify.success('Success remove item');
                         } else {
                             alertify.warning('Failed to delete item');
                         }

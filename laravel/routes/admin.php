@@ -28,6 +28,7 @@ Route::prefix('admin')->group(function () {
     // Items route
     Route::get('/items', [ItemsController::class, 'show']);
     Route::post('/items/add', [ItemsController::class, 'add']);
+    Route::put('/items/{itemId}', [ItemsController::class, 'edit']);
     Route::delete('/items/{itemId}', [ItemsController::class, 'remove']);
 });
 

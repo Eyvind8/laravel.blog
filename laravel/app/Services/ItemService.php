@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Items;
 use App\Repositories\ItemsRepository;
 
 class ItemService
@@ -9,7 +10,7 @@ class ItemService
     /**
      * @var ItemsRepository
      */
-    protected $itemsRepository;
+    public $itemsRepository;
 
     /**
      * @var TagService
@@ -28,20 +29,16 @@ class ItemService
     }
 
     /**
+     * @param Items $newItem
      * @param array $itemData
-     * @param array $itemTags
-     * @return bool
+     * @return int
      */
-    public function createItem(array $itemData, array $itemTags = []): bool
+    public function store(Items $newItem, array $itemData): int
     {
-        $resultSaveItem = $this->itemsRepository->create($itemData);
-        $itemId = optional($resultSaveItem)->id;
+        $newItem->fill($itemData);
+        $newItem->save();
 
-        if (!isset($itemId)) {
-            return false;
-        }
-
-        return !$itemTags || $this->tagService->saveItemTags($itemId, $itemTags);
+        return (int)optional($newItem)->id;
     }
 
     /**
