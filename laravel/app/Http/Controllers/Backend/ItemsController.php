@@ -9,17 +9,12 @@ use App\Repositories\ItemsRepository;
 use App\Services\ItemService;
 use App\Services\TagService;
 use App\Services\TranslationService;
+use Illuminate\Http\JsonResponse;
 
 class ItemsController extends AdminRootController
 {
     public function show(FormRequest $request, ItemsRepository $itemsRepository)
     {
-//        $textToTranslate = 'Боксёра может обидеть каждый, но не каждый успеет извиниться';
-//        $translatedText = (new TranslationService())->translateFromRussianToUkrainian($textToTranslate);
-//        echo 'Исходный текст: ' . $textToTranslate . '<br>';
-//        echo 'Переведенный текст: ' . $translatedText ;
-
-
         $requestData = $this->getSessionPaginatorData($request);
         $request->merge($requestData);
 
@@ -37,6 +32,7 @@ class ItemsController extends AdminRootController
     /**
      * @param FormRequest $request
      * @param ItemService $itemService
+     * @param TagService $tagService
      */
     public function add(FormRequest $request, ItemService $itemService, TagService $tagService)
     {
@@ -72,8 +68,9 @@ class ItemsController extends AdminRootController
     /**
      * @param $itemId
      * @param ItemService $itemService
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function remove($itemId, ItemService $itemService)
+    public function remove($itemId, ItemService $itemService): JsonResponse
     {
         if ($itemService->remove($itemId)) {
             return response()->json(['result' => true], 200);
@@ -82,7 +79,14 @@ class ItemsController extends AdminRootController
         return response()->json(['error' => 'Failed to delete item'], 400);
     }
 
-    public function edit($itemId, FormRequest $request, ItemService $itemService, TagService $tagService)
+    /**
+     * @param $itemId
+     * @param FormRequest $request
+     * @param ItemService $itemService
+     * @param TagService $tagService
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit($itemId, FormRequest $request, ItemService $itemService, TagService $tagService): JsonResponse
     {
         $dataRequest = $request->all();
         $status = $dataRequest['status'] === 'new' ? Items::STATUS_NEW : Items::STATUS_ACTIVE;
@@ -108,6 +112,19 @@ class ItemsController extends AdminRootController
         }
 
         return response()->json(['result' => true], 200);
+    }
+
+    /**
+     * @param FormRequest $request
+     * @param TranslationService $translationService
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function translate(FormRequest $request, TranslationService $translationService): JsonResponse
+    {
+        $sourceText = $request->get('source_text');
+        $translateText = $translationService->translateFromRussianToUkrainian($sourceText);
+
+        return response()->json(['result' => $translateText], 200);
     }
 
 }

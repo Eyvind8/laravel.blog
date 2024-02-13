@@ -12,9 +12,15 @@
                 <h5>Create item:</h5>
             </div>
             <div class="mb-3 row col-sm-12">
-                <label for="contentTextarea" class="col-sm-2 col-form-label" style="padding-left: 0px">Item:</label>
+                <div for="contentTextarea" class="col-sm-2 col-form-label" style="padding-left: 0px">
+                    <label>Item:</label> <br>
+                    <a href="#" onclick="translateItem()" title="Translate item"
+                       style="color: #797979; margin-left: 10px; cursor: pointer;">
+                        <i class="fa fa-language"></i>
+                    </a>
+                </div>
                 <div class="col-sm-10">
-                    <textarea name="content" class="form-control content-textarea" rows="3"
+                    <textarea id='item-content' name="content" class="form-control content-textarea" rows="3"
                               style="width: 100%;"></textarea>
                 </div>
             </div>

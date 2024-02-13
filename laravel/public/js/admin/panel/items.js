@@ -138,4 +138,24 @@ function closeEditDialog() {
     $('#editDialog').modal('hide');
 }
 
+// translate item
+function translateItem()
+{
+    var sourceText = $('#item-content').val();
 
+    $.ajax({
+        url: '/admin/translate',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            'source_text': sourceText
+            },
+        success: function(data) {
+            $('#item-content').val(data.result);
+        },
+        error: function(xhr, status, error) {
+            alertify.error('Error AJAX-request: ' + status + ', ' + error);
+        }
+    });
+
+}
