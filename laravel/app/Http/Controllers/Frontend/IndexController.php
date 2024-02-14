@@ -41,6 +41,19 @@ class IndexController extends Controller
         $requestData = $request->all();
         $requestData['sortField'] = 'created';
         $requestData['sortDirection'] = 'desc';
+        $request['filter'] = json_decode('{
+                                                  "type": "group",
+                                                  "expression": "and",
+                                                  "fields": [
+                                                    {
+                                                      "type": "field",
+                                                      "name": "status",
+                                                      "expression": "eq",
+                                                      "value": 1,
+                                                      "dataType": "select"
+                                                    }
+                                                  ]
+                                                }', true);
         $request->merge($requestData);
 
         $items = $itemsRepository->list(new Filter($request->all()))->toArray();
@@ -82,7 +95,8 @@ class IndexController extends Controller
      * @param FormRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function incrementViews(FormRequest $request) {
+    public function incrementViews(FormRequest $request)
+    {
         $itemIds = $request->input('itemIds', []);
 
         if (!empty($itemIds)) {
