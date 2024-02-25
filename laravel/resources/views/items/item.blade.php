@@ -20,6 +20,7 @@
 
                         <div class="form-group col-lg-6" style="margin-top: 10px; padding-left: 0px;">
                             <form id="commentForm" action="{{ route('comments.store') }}" method="post">
+                                @csrf
                                 <input type="hidden" name="item_id" value="{{ $item['id'] }}">
                                 <textarea autocomplete="off" id="commentTextarea" class="form-control" name="comment"
                                           rows="4" placeholder="Коментувати"></textarea>
