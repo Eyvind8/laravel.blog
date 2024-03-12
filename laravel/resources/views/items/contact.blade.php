@@ -13,7 +13,7 @@
                     <div style="margin-bottom: 20px">
                         Бажаєте розмістити рекламу або співпрацювати з нами?
                         Ми відкриті до нових можливостей та партнерств.
-                        Звертайтеся за нижченаведеними контактами, і ми надамо вам всю необхідну
+                        Звертайтеся і ми надамо вам всю необхідну
                         інформацію про рекламні можливості та співпрацю
                     </div>
 
@@ -28,12 +28,12 @@
                             </i>
                             Phone : (095) 734-0687
                         </p>
-                        <p>
-                            <i class="fa fa-envelope pr-10">
-                            </i>
-                            Email :
-                            <a href="mailto:support@joks.club">support@joks.club</a>
-                        </p>
+{{--                        <p>--}}
+{{--                            <i class="fa fa-envelope pr-10">--}}
+{{--                            </i>--}}
+{{--                            Email :--}}
+{{--                            <a href="mailto:support@joks.club">support@joks.club</a>--}}
+{{--                        </p>--}}
                     </address>
                 </div>
             </div>
