@@ -184,13 +184,13 @@
         <div class="row">
             <div class="col-lg-6 col-sm-6 pull-right">
                 <ul class="social-link-footer list-unstyled">
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fжарт.club" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="https://plus.google.com/share?url=https%3A%2F%2Fжарт.club" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fжарт.club" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fжарт.club&text=Заголовок%20сторінки%20" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="skype:жарт.club?chat" target="_blank"><i class="fa fa-skype"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="https://plus.google.com/share?url=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faxaxa.club&text=Заголовок%20сторінки%20" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="skype:axaxa.club?chat" target="_blank"><i class="fa fa-skype"></i></a></li>
                     <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="https://github.com/жарт-club" target="_blank"><i class="fa fa-github"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="https://www.youtube.com/share?v=https%3A%2F%2Fжарт.club" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="https://www.youtube.com/share?v=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-youtube"></i></a></li>
                 </ul>
 
 

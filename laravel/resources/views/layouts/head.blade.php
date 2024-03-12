@@ -1,13 +1,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Developed By M Abdur Rokib Promy">
-<meta name="author" content="cosmic">
-<meta name="keywords" content="Bootstrap 3, Template, Theme, Responsive, Corporate, Business">
+<meta name="description" content="Смішні анекдоти, веселі історії та розважальний контент на сайті axaxa.club. Забудьте про сумні будні з нашими гумористичними матеріалами.">
+<meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
 <link rel="shortcut icon" href="img/favicon.png">
 
-<title>
-    JOKESUA com
-</title>
+<title>axaxa.club - Смішні жарти та анекдоти</title>
+
 
 <!-- Bootstrap core CSS -->
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
