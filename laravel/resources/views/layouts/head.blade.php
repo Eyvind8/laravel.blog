@@ -4,7 +4,7 @@
 <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
 <link rel="shortcut icon" href="img/favicon.png">
 
-<title>axaxa.club - Смішні жарти та анекдоти</title>
+<title>Axaxa.club - Смішні жарти та анекдоти</title>
 
 
 <!-- Bootstrap core CSS -->
