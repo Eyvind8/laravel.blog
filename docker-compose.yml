@@ -14,6 +14,7 @@ services:
         max-size: "100m"
     links:
       - php:php
+    restart: always
 
   php:
     build: ./php
@@ -28,6 +29,7 @@ services:
       - redis
     volumes:
       - ./:/var/www/html
+    restart: always
 
   mysql:
     image: mysql:8.0.32
@@ -42,6 +44,7 @@ services:
       - ./data/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
+    restart: always
 
   redis:
     image: redis
@@ -54,6 +57,7 @@ services:
     volumes:
       - ./data/redis:/data
     command: redis-server --appendonly yes
+    restart: always
 
   phpmyadmin:
     image: phpmyadmin
@@ -65,5 +69,6 @@ services:
         max-size: "100m"
     environment:
       - PMA_ARBITRARY=1
+    restart: always
 
 
