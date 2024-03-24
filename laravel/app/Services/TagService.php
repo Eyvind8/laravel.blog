@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Tag;
 use App\Repositories\ItemTagRepository;
 use App\Repositories\TagRepository;
 
@@ -10,7 +11,7 @@ class TagService
     /**
      * @var TagRepository
      */
-    private $tagRepository;
+    public $tagRepository;
 
     /**
      * @var ItemTagRepository
@@ -59,6 +60,7 @@ class TagService
             return true;
         }
 
+        // удалаяем связи
         $this->itemTagRepository->deleteByItemId($itemId);
 
         // удаляем непривязанные теги
@@ -90,6 +92,63 @@ class TagService
     private function findOrCreateTag(string $tagName): int
     {
         return $this->tagRepository->findOrCreateTag($tagName);
+    }
+
+    /**
+     * @return void
+     */
+    public function recalculateRecords(): void
+    {
+        $tags = Tag::all();
+
+        foreach ($tags as $tag) {
+            $activeRecordsCount = $this->tagRepository->getActiveRecordsCount($tag->id);
+            $totalRecordsCount = $this->tagRepository->getTotalRecordsCount($tag->id);
+
+            $tag->active_records_count = $activeRecordsCount;
+            $tag->total_records_count = $totalRecordsCount;
+            $tag->save();
+        }
+
+        $activeRecordsCount = [];
+        $totalRecordsCount = [];
+        $tags = Tag::where('parent_id', '>', 0)->get();
+
+
+        $tags->each(function ($tag) use (&$activeRecordsCount, &$totalRecordsCount) {
+            /** @var $tag Tag */
+            if (!isset($activeRecordsCount[$tag->parent_id])) {
+                $activeRecordsCount[$tag->parent_id] = $tag->active_records_count;
+            } else {
+                $activeRecordsCount[$tag->parent_id] += $tag->active_records_count;
+            }
+
+
+            if (!isset($totalRecordsCount[$tag->parent_id])) {
+                $totalRecordsCount[$tag->parent_id] = $tag->total_records_count;
+            } else {
+                $totalRecordsCount[$tag->parent_id] += $tag->total_records_count;
+            }
+        });
+
+        foreach ($activeRecordsCount as $parentId => $activeCount) {
+            $tag = Tag::find($parentId);
+
+            if ($tag) {
+                $tag->active_records_count += $activeCount;
+                $tag->save();
+            }
+        }
+
+        foreach ($totalRecordsCount as $parentId => $totalCount) {
+            $tag = Tag::find($parentId);
+
+            if ($tag) {
+                $tag->total_records_count += $totalCount;
+                $tag->save();
+            }
+        }
+
     }
 
 }

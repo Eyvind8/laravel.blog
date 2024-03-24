@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $parent_id
  * @property string $name
  * @property int $active
+ * @property int $active_records_count
+ * @property int $total_records_count
  * @property string $created
  * @property string $update
  */
@@ -40,6 +42,8 @@ class Tag extends Model implements TagsInterface
         'parent_id',
         'name',
         'active',
+        'active_records_count',
+        'total_records_count',
     ];
 
     /**
@@ -48,6 +52,11 @@ class Tag extends Model implements TagsInterface
     protected static function boot()
     {
         parent::boot();
-        static::addGlobalScope(new TagsActiveScope());
+        //static::addGlobalScope(new TagsActiveScope());
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Tag::class, 'parent_id', 'id');
     }
 }

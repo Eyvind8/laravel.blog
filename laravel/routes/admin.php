@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\TagsController;
 use App\Http\Controllers\Backend\ItemsController;
 use App\Http\Controllers\Backend\AuthControllerAdmin;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,8 @@ Route::prefix('admin')->group(function () {
         return redirect('/admin/items');
     });
     Route::get('/items', [ItemsController::class, 'show']);
+    Route::get('/tags', [TagsController::class, 'show'])->name('admin.tags.show');
+    Route::put('/tags', [TagsController::class, 'recalculate'])->name('admin.tags.recalculate');
 
     // Auth routes
     Route::withoutMiddleware(['admin'])->group(function () {

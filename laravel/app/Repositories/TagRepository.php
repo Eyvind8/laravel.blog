@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Component\BaseRepository;
+use App\Models\ItemTag;
 use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 
@@ -46,7 +47,23 @@ final class TagRepository extends BaseRepository
             ->leftJoin('item_tag', 'tag.id', '=', 'item_tag.tag_id')
             ->whereIn('tag.id', $tagIds)
             ->whereNull('item_tag.tag_id')
+            ->whereNull('tag.parent_id')
             ->pluck('tag.id')
             ->toArray();
+    }
+
+    public function getActiveRecordsCount($tagId)
+    {
+        return ItemTag::where('tag_id', $tagId)
+            ->join('item', 'item_tag.item_id', '=', 'item.id')
+            ->where('item.status', '=', Tag::STATUS_ACTIVE)
+            ->count();
+    }
+
+    public function getTotalRecordsCount($tagId)
+    {
+        return ItemTag::where('tag_id', $tagId)
+            ->join('item', 'item_tag.item_id', '=', 'item.id')
+            ->count();
     }
 }
