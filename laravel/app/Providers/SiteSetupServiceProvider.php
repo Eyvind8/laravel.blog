@@ -26,8 +26,8 @@ class SiteSetupServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $tags = Tag::all()->sortBy(function($tag) {
-            return [/* $tag->parent_id,*/ $tag->name];
+        $tags = Tag::all()->sortByDesc(function($tag) {
+            return [$tag->active_records_count, $tag->name];
         });
 
         view()->share('tags', $tags);

@@ -108,6 +108,7 @@
                 Tags
             </h3>
             <ul class="tag">
+{{--                laravel/app/Providers/SiteSetupServiceProvider.php:27--}}
                 @foreach ($tags as $tag)
                     <li>
                         <a href="/?tag={{ $tag->id }}"
