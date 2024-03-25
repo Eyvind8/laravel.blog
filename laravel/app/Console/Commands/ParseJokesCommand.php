@@ -14,37 +14,37 @@ class ParseJokesCommand extends Command
 
     public function handle()
     {
-        // URL страницы для парсинга
+        // URL of the page to parse
         $url = 'https://vse-shutochki.ru/korotkie-anekdoty';
 
-        // Создаем HTTP-клиент Guzzle
+        // Create Guzzle HTTP client
         $client = new Client();
 
-        // Отправляем GET-запрос для получения HTML-кода страницы
+        // Send GET request to fetch the HTML content of the page
         $response = $client->request('GET', $url);
 
-        // Получаем HTML-код страницы
+        // Get the HTML content of the page
         $html = $response->getBody()->getContents();
 
-        // Создаем объект PHP Simple HTML DOM
+        // Create PHP Simple HTML DOM object
         $dom = HtmlDomParser::str_get_html($html);
 
-        // Находим все div'ы с классом "post"
+        // Find all div elements with class "post"
         $posts = $dom->find('div.post');
 
-        // Перебираем все найденные div'ы с классом "post"
+        // Iterate through all found div elements with class "post"
         foreach ($posts as $post) {
-            // Находим первый div с классом "addSidePadding" внутри текущего div'а "post"
+            // Find the first div element with class "addSidePadding" inside the current "post" div
             $firstDiv = $post->find('div.addSidePadding', 0);
 
-            // Проверяем, найден ли элемент
+            // Check if the element is found
             if ($firstDiv) {
-                // Выводим текст первого div'а внутри текущего div'а "post"
+                // Output the plaintext of the first div element inside the current "post" div
                 $this->line($firstDiv->plaintext);
             }
         }
 
-        // Освобождаем ресурсы, занятые объектом PHP Simple HTML DOM
+        // Clear resources occupied by the PHP Simple HTML DOM object
         $dom->clear();
         unset($dom);
     }
