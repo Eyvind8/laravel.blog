@@ -47,7 +47,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     restart: no
-#    mem_limit: 256m
+    mem_limit: 256m
 
   redis:
     image: redis
@@ -61,7 +61,7 @@ services:
       - ./data/redis:/data
     command: redis-server --appendonly yes
     restart: no
-#    mem_limit: 128m
+    mem_limit: 128m
 
   phpmyadmin:
     image: phpmyadmin
