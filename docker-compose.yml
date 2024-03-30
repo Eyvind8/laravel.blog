@@ -11,10 +11,11 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: "100m"
+        max-size: "10m"
     links:
       - php:php
     restart: always
+    mem_limit: 64m
 
   php:
     build: ./php
@@ -23,13 +24,14 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: "100m"
+        max-size: "10m"
     links:
       - mysql
       - redis
     volumes:
       - ./:/var/www/html
     restart: always
+    mem_limit: 126m
 
   mysql:
     image: mysql:8.0.32
@@ -39,12 +41,13 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: "100m"
+        max-size: "10m"
     volumes:
       - ./data/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
     restart: always
+    mem_limit: 256m
 
   redis:
     image: redis
@@ -53,11 +56,12 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: "100m"
+        max-size: "10m"
     volumes:
       - ./data/redis:/data
     command: redis-server --appendonly yes
     restart: always
+    mem_limit: 128m
 
   phpmyadmin:
     image: phpmyadmin
@@ -66,9 +70,10 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: "100m"
+        max-size: "10m"
     environment:
       - PMA_ARBITRARY=1
     restart: always
+    mem_limit: 64m
 
 
