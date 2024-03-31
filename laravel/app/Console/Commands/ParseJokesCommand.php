@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Repositories\ItemsParseRepository;
+use App\Services\ItemParseService;
 use Sunra\PhpSimple\HtmlDomParser;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
@@ -32,6 +34,11 @@ class ParseJokesCommand extends Command
         // Find all div elements with class "post"
         $posts = $dom->find('div.post');
 
+        /** @var ItemParseService $itemsParseService */
+        $itemsParseService = app()->make(ItemParseService::class);
+
+        $counter = 0;
+
         // Iterate through all found div elements with class "post"
         foreach ($posts as $post) {
             // Find the first div element with class "addSidePadding" inside the current "post" div
@@ -40,7 +47,12 @@ class ParseJokesCommand extends Command
             // Check if the element is found
             if ($firstDiv) {
                 // Output the plaintext of the first div element inside the current "post" div
-                $this->line($firstDiv->plaintext);
+                $joke = trim($firstDiv->plaintext);
+
+                $isAdd = $itemsParseService->storeItemParse($joke);
+
+                $this->line("======== {$counter} ======== (". ($isAdd ? '+' : '-') .") ");
+                $this->line($joke);
             }
         }
 
