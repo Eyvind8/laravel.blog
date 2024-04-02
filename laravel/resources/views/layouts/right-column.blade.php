@@ -1,14 +1,14 @@
 <div class="col-lg-3">
     <div class="blog-side-item">
-        <div class="search-row">
-            <form action="/" method="GET" class="search-form">
-                <input type="text" name="search" class="form-control"
-                       placeholder="Шукати тут"
-                       onkeypress="handleSearchKeyPress(event, this)"
-                       value="{{ request()->input('search') }}"
-                >
-            </form>
-        </div>
+{{--        <div class="search-row">--}}
+{{--            <form action="/" method="GET" class="search-form">--}}
+{{--                <input type="text" name="search" class="form-control"--}}
+{{--                       placeholder="Шукати тут"--}}
+{{--                       onkeypress="handleSearchKeyPress(event, this)"--}}
+{{--                       value="{{ request()->input('search') }}"--}}
+{{--                >--}}
+{{--            </form>--}}
+{{--        </div>--}}
         {{--<div class="category">
             <h3>
                 Categories
@@ -103,7 +103,7 @@
             </div>
         </div>--}}
 
-        <div class="tags">
+        <div class="tags" style="margin-top: -20px">
             <h3>
                 Tags
             </h3>
