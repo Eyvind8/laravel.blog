@@ -39,9 +39,17 @@
         });
 
         $(".copyButton").click(function () {
+            $(this).tooltip('hide');
             var $textToCopy = $(this).closest('div').find('.textToCopy');
             var textToCopy = $.trim($textToCopy.text());
             copyTextToClipboard(textToCopy);
+
+            var $element = $(this);
+
+            setTimeout(function() {
+                $element.attr('data-original-title', 'Скопійовано').tooltip('show');
+            }, 500);
+
         });
 
         incrementViews();

@@ -201,7 +201,7 @@
 
             <li>
                 <form action="/" method="GET" class="search-form">
-                    <input id="searchJoke" type="text" name="search" class="form-control search111" placeholder="Пошук" onkeypress="handleSearchKeyPress(event, this)">
+                    <input id="searchJoke" type="text" name="search" class="form-control" placeholder="Пошук" onkeypress="handleSearchKeyPress(event, this)">
                 </form>
             </li>
         </ul>

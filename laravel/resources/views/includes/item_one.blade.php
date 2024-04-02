@@ -40,11 +40,12 @@
     <div style="display: flex;">
         <span class="itemText textToCopy">{{ Str::ucfirst($item['content']) }}</span>
 
-        <a href="#" class="copyButton" onclick="return false;">
-            <img width="16px" alt="copy" title="Копіювати" src="/img/copy.png">
+        <a href="#" class="copyButton tooltips" onclick="return false;" data-placement="top" title="Копіювати">
+            <img width="16px" alt="copy" src="/img/copy.png">
         </a>
-        <a href="#" class="likeButton" onclick="toggleLike({{ $item->id }}); return false;">
-            <img src="/img/heart_small-2.png" title="Вподобайка :)" width="16px">
+        <a href="#" class="likeButton tooltips" onclick="toggleLike({{ $item->id }}); return false;"
+           data-placement="top" title="Вподобайка:)">
+            <img src="/img/heart_small-2.png" width="16px">
         </a>
         <input class="js-item-id" type="hidden" value="{{ $item->id }}">
     </div>
