@@ -18,4 +18,9 @@ interface ItemsParseInterface
      * уже использавоно, т.е. скопировано в Item
      */
     public const STATUS_USE = 2;
+
+    /**
+     *
+     */
+    public const STATUS_DELETE = 3;
 }

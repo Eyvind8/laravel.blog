@@ -64,6 +64,29 @@ class ItemParseService
      */
     public function remove(int $itemParseId): bool
     {
-        return (bool)$this->itemsParseRepository->delete($itemParseId);
+        $dataItem = [
+            'status' => ItemsParse::STATUS_DELETE
+        ];
+
+        return $this->itemsParseRepository->update($itemParseId, $dataItem);
+    }
+
+    public function updateItemsParse(int $itemParseId, array $data): bool
+    {
+        $dataItem = [
+            'status' => ItemsParse::STATUS_ACTIVE,
+            'publication_date' => $data['publicationDate'],
+        ];
+
+        return $this->itemsParseRepository->update($itemParseId, $dataItem);
+    }
+
+    public function markUseItemsParse(int $itemParseId): bool
+    {
+        $dataItem = [
+            'status' => ItemsParse::STATUS_USE
+        ];
+
+        return $this->itemsParseRepository->update($itemParseId, $dataItem);
     }
 }

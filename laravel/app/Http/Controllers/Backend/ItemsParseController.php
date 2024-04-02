@@ -12,6 +12,7 @@ use App\Services\ItemService;
 use App\Services\TagService;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Artisan;
 
 class ItemsParseController extends AdminRootController
 {
@@ -22,6 +23,19 @@ class ItemsParseController extends AdminRootController
     public function show(FormRequest $request, ItemsParseRepository $itemsParseRepository)
     {
         $requestData = $this->getSessionPaginatorData($request);
+        $request['filter'] = json_decode('{
+                                                  "type": "group",
+                                                  "expression": "and",
+                                                  "fields": [
+                                                    {
+                                                      "type": "field",
+                                                      "name": "status",
+                                                      "expression": "eq",
+                                                      "value": 0,
+                                                      "dataType": "select"
+                                                    }
+                                                  ]
+                                                }', true);
         $request->merge($requestData);
 
         $items = $itemsParseRepository->list(new Filter($request->all()))->toArray();
@@ -49,34 +63,15 @@ class ItemsParseController extends AdminRootController
 
         if ($createdDateTime->greaterThan($currentDateTime)) {
             // cron script move to Items
-            $result = $this->updateItemsParse($itemId, $dataRequest, $itemParseService);
+            $result = $itemParseService->updateItemsParse($itemId, $dataRequest);
             return response()->json(['resultUpdate' => $result], 200);
         }
 
-        $this->addItem($dataRequest, $itemService, $tagService)
-            ->markUseItemsParse($itemId, $itemParseService);
+        $this->addItem($dataRequest, $itemService, $tagService);
+        $itemParseService->markUseItemsParse($itemId);
 
 
         return response()->json(['resultMove' => true], 200);
-    }
-
-    protected function updateItemsParse(int $itemId, array $dataRequest, ItemParseService $itemParseService): bool
-    {
-        $dataItem = [
-            'status' => ItemsParse::STATUS_ACTIVE,
-            'publication_date' => $dataRequest['publicationDate'],
-        ];
-
-        return $itemParseService->itemsParseRepository->update($itemId, $dataItem);
-    }
-
-    protected function markUseItemsParse(int $itemId, ItemParseService $itemParseService): bool
-    {
-        $dataItem = [
-            'status' => ItemsParse::STATUS_USE
-        ];
-
-        return $itemParseService->itemsParseRepository->update($itemId, $dataItem);
     }
 
     protected function addItem(array $dataRequest, ItemService $itemService, TagService $tagService)
@@ -105,8 +100,6 @@ class ItemsParseController extends AdminRootController
         if ($tagsItem) {
             $tagService->saveItemTags($itemId, $tagsItem);
         }
-
-        return $this;
     }
 
     /**
@@ -121,5 +114,11 @@ class ItemsParseController extends AdminRootController
         }
 
         return response()->json(['error' => 'Failed to delete item'], 400);
+    }
+
+    public function runParse(): void
+    {
+        Artisan::call('jokes:parse-and-save');
+        echo Artisan::output();
     }
 }

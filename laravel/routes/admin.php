@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function () {
 
     // Items parse route
     Route::get('/items-parse', [ItemsParseController::class, 'show']);
+    Route::get('/items-parse/run', [ItemsParseController::class, 'runParse']);
     Route::put('/items-parse/{itemId}', [ItemsParseController::class, 'edit']);
     Route::delete('/items-parse/{itemId}', [ItemsParseController::class, 'remove']);
 

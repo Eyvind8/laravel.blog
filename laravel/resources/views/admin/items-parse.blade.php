@@ -2,7 +2,7 @@
 
 @section('content')
     <a href="/admin/items">
-        <h5 class="mb-3"><strong>Items</strong></h5>
+        <h5 class="mb-3"><strong>Items parse</strong></h5>
     </a>
     @if (empty($items['list']))
         <div class="blog-item">
@@ -20,7 +20,7 @@
                     <div class="table-responsive">
                         <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row container">
-                                <div class="col-sm-12 col-md-6">
+                                <div class="col-sm-12 col-md-4">
                                     <div class="dataTables_length" id="example_length"><label>Show
                                             <select onchange="handleSelectChange('/admin/items-parse', this)"
                                                     id="limitItemsSet"
@@ -36,7 +36,10 @@
                                             </select> entries</label>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6">
+                                <div class="col-sm-12 col-md-4">
+                                    <a href="/admin/items-parse/run" class="text-danger">Run parse</a>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
                                     <div id="example_filter" class="dataTables_filter">
                                         <form action="/admin/items-parse" method="GET" class="search-form">
                                             <label>Search:

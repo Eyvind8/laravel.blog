@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Repositories\ItemsParseRepository;
 use App\Services\ItemParseService;
 use Sunra\PhpSimple\HtmlDomParser;
 use Illuminate\Console\Command;
