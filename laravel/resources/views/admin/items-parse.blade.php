@@ -22,7 +22,7 @@
                             <div class="row container">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="dataTables_length" id="example_length"><label>Show
-                                            <select onchange="handleSelectChange('/admin/items', this)"
+                                            <select onchange="handleSelectChange('/admin/items-parse', this)"
                                                     id="limitItemsSet"
                                                     class="custom-select custom-select-sm form-control form-control-sm">
                                                 <option {{ $items['limit'] == 10 ? 'selected' : '' }} value="10">10
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <div id="example_filter" class="dataTables_filter">
-                                        <form action="/admin/items" method="GET" class="search-form">
+                                        <form action="/admin/items-parse" method="GET" class="search-form">
                                             <label>Search:
                                                 <input
                                                     type="search"
@@ -52,10 +52,8 @@
                                         </form>
                                     </div>
                                 </div>
+                                @include('admin.includes.item_edit-tag')
                             </div>
-                            @include('admin.includes.item_edit-tag')
-                            @include('admin.includes.item_create')
-
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -67,23 +65,18 @@
                                         <th data-column="created" class="sorting_{{ $items['sort_dir'] }}"
                                             aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending"
                                             style="width: 10px; padding-right: 0px;"
-                                            onclick="changeSorting('/admin/items', 'created')">
+                                            onclick="changeSorting('/admin/items-parse', 'created')">
                                             Data
                                         </th>
                                         <th aria-controls="example" rowspan="1" colspan="1"
                                             style="display: flex; justify-content: space-between; align-items: center;">
-                                            Content / Tags
-                                            <div style="text-align: right;">
-                                                <a title="Create item" href="#" onclick="$('#create-item-js').slideToggle('slow');">
-                                                    <img width="26px" src="/img/admin/plus.png"/>
-                                                </a>
-                                            </div>
+                                            Content
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($items['list'] as $item)
-                                        @include('admin.includes.item_one', ['item' => $item])
+                                        @include('admin.includes.item_parse_one', ['item' => $item])
                                     @endforeach
                                     </tbody>
                                 </table>

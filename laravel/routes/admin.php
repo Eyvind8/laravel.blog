@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\TagsController;
 use App\Http\Controllers\Backend\ItemsController;
+use App\Http\Controllers\Backend\ItemsParseController;
 use App\Http\Controllers\Backend\AuthControllerAdmin;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,12 @@ Route::prefix('admin')->group(function () {
     Route::post('/items/add', [ItemsController::class, 'add']);
     Route::put('/items/{itemId}', [ItemsController::class, 'edit']);
     Route::delete('/items/{itemId}', [ItemsController::class, 'remove']);
+
+    // Items parse route
+    Route::get('/items-parse', [ItemsParseController::class, 'show']);
+    Route::put('/items-parse/{itemId}', [ItemsParseController::class, 'edit']);
+    Route::delete('/items-parse/{itemId}', [ItemsParseController::class, 'remove']);
+
 
     Route::post('/translate', [ItemsController::class, 'translate']);
 });

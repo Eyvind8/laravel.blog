@@ -28,6 +28,9 @@
                     <a href="/admin/items" class=""><i class="fa fa-pencil-square mr-3"> </i>
                         <span class="none">Items </span>
                     </a>
+                    <a href="/admin/items-parse" class=""><i class="fa fa-pencil-square mr-3"> </i>
+                        <span class="none">Items parse</span>
+                    </a>
                     <a href="/admin/tags" class=""><i class="fa fa-pencil-square mr-3"> </i>
                         <span class="none">Tags </span>
                     </a>

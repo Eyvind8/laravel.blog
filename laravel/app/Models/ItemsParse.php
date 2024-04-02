@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Interfaces\ItemsInterface;
+use App\Models\Interfaces\ItemsParseInterface;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,10 +14,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $content
  * @property string $content_ua
+ * @property int $status
+ * @property \Illuminate\Support\Carbon $publication_date
  * @property \Illuminate\Support\Carbon $created
  * @property \Illuminate\Support\Carbon $updated
  */
-class ItemsParse extends Model implements ItemsInterface
+class ItemsParse extends Model implements ItemsParseInterface
 {
     /**
      * @var string
@@ -36,14 +38,14 @@ class ItemsParse extends Model implements ItemsInterface
      *
      * @var array
      */
-    protected $fillable = ['content', 'content_ua'];
+    protected $fillable = ['content', 'content_ua', 'status', 'publication_date'];
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $dates = ['created', 'updated'];
+    protected $dates = ['created', 'updated', 'publication_date'];
 
     /**
      * Get the name of the "created at" column.

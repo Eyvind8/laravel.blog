@@ -17,7 +17,7 @@ class ItemParseService
     /**
      * @var ItemsParseRepository
      */
-    private ItemsParseRepository $itemsParseRepository;
+    public ItemsParseRepository $itemsParseRepository;
 
     /**
      * @param ItemsRepository $itemsRepository
