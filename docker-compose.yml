@@ -14,7 +14,7 @@ services:
         max-size: "10m"
     links:
       - php:php
-    restart: no
+    restart: "no"
 #    mem_limit: 64m
 
   php:
@@ -30,7 +30,7 @@ services:
       - redis
     volumes:
       - ./:/var/www/html
-    restart: no
+    restart: "no"
 #    mem_limit: 126m
 
   mysql:
@@ -46,7 +46,7 @@ services:
       - ./data/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-    restart: no
+    restart: "no"
     mem_limit: 256m
 
   redis:
@@ -60,7 +60,7 @@ services:
     volumes:
       - ./data/redis:/data
     command: redis-server --appendonly yes
-    restart: no
+    restart: "no"
     mem_limit: 128m
 
   phpmyadmin:
@@ -73,7 +73,7 @@ services:
         max-size: "10m"
     environment:
       - PMA_ARBITRARY=1
-    restart: no
+    restart: "no"
 #    mem_limit: 64m
 
 

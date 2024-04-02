@@ -40,7 +40,7 @@
                     <i class="fa fa-save"></i>
                 </a>
 
-                <a href="#" class="delete-item" data-item-id="{{ $item->id }}" title="Delete item"
+                <a href="#" class="delete-item-parse" data-item-id="{{ $item->id }}" title="Delete item"
                    style="color: #797979; cursor: pointer;">
                     <i class="fa fa-trash"></i>
                 </a>

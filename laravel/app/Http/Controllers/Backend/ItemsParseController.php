@@ -116,9 +116,15 @@ class ItemsParseController extends AdminRootController
         return response()->json(['error' => 'Failed to delete item'], 400);
     }
 
-    public function runParse(): void
+    /**
+     * @param FormRequest $request
+     * @return void
+     */
+    public function runParse(FormRequest $request): void
     {
-        Artisan::call('jokes:parse-and-save');
+        $page = $request->input('page', 1);
+        Artisan::call('jokes:parse-and-save --page=' . $page);
+
         echo Artisan::output();
     }
 }

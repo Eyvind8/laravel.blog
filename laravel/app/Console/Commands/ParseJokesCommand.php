@@ -9,14 +9,19 @@ use GuzzleHttp\Client;
 
 class ParseJokesCommand extends Command
 {
-    protected $signature = 'jokes:parse-and-save';
+    protected $signature = 'jokes:parse-and-save {--page=1 : The page number}';
 
     protected $description = 'Parse and save jokes';
 
     public function handle()
     {
         // URL of the page to parse
-        $url = 'https://vse-shutochki.ru/korotkie-anekdoty';
+        $url = 'https://vse-shutochki.ru/korotkie-anekdoty/';
+
+        $page = $this->option('page');
+        if ($page > 1) {
+            $url .= $page;
+        }
 
         // Create Guzzle HTTP client
         $client = new Client();
@@ -48,10 +53,12 @@ class ParseJokesCommand extends Command
                 // Output the plaintext of the first div element inside the current "post" div
                 $joke = trim($firstDiv->plaintext);
 
-                $isAdd = $itemsParseService->storeItemParse($joke);
+                $itemsParseService->storeItemParse($joke);
 
-                $this->line("======== {$counter} ======== (". ($isAdd ? '+' : '-') .") ");
+                $this->line("======== {$counter} ========");
                 $this->line($joke);
+                $this->line('<br>');
+                $counter++;
             }
         }
 

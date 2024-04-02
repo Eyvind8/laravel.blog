@@ -61,34 +61,24 @@ $(document).ready(function()
     });
 
     // Удаление элемента
-    $(document).on('click', '.delete-item', function(event) {
+    $(document).on('click', '.delete-item-parse', function(event) {
         event.preventDefault();
         var itemId = $(this).data('item-id');
 
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this item!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                    url: '/admin/items-parse/' + itemId,
-                    type: 'DELETE',
-                    dataType: 'json',
-                    success: function(data) {
-                        if (data.result === true) {
-                            $('#item-js-' + itemId).remove();
-                            alertify.success('Success remove item');
-                        } else {
-                            alertify.warning('Failed to delete item');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        alertify.error('Error AJAX-request: ' + status + ', ' + error);
-                    }
-                });
+        $.ajax({
+            url: '/admin/items-parse/' + itemId,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function(data) {
+                if (data.result === true) {
+                    $('#item-js-' + itemId).remove();
+                    alertify.success('Success remove item');
+                } else {
+                    alertify.warning('Failed to delete item');
+                }
+            },
+            error: function(xhr, status, error) {
+                alertify.error('Error AJAX-request: ' + status + ', ' + error);
             }
         });
     });
