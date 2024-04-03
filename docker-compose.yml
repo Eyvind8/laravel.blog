@@ -17,7 +17,7 @@ services:
     restart: "no"
 
   php:
-    build: ./php
+    build: docker/php
     expose:
       - "9000"
     logging:
@@ -41,6 +41,7 @@ services:
       options:
         max-size: "10m"
     volumes:
+      - ./docker/mysql/my.cnf:/etc/my.cnf
       - ./data/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
