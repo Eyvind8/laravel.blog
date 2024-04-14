@@ -262,9 +262,9 @@
         socialIcons.addEventListener('click', () => {
             const itemText = socialIcons.closest('.col-lg-10').querySelector('.itemText').textContent;
             const shareURL = 'http://axaxa.club' + socialIcons.closest('.row').querySelector('.col-lg-10 .js-item-id').getAttribute('data-link');
-            socialIcons.querySelector('.facebook').setAttribute('href', `https://www.facebook.com/sharer/sharer.php?u=${shareURL}&quote=${itemText}`);
-            socialIcons.querySelector('.instagram').setAttribute('href', `https://www.instagram.com/share?url=${shareURL}&text=${itemText}`);
-            socialIcons.querySelector('.twitter').setAttribute('href', `https://twitter.com/intent/tweet?url=${shareURL}&text=${itemText}`);
+            socialIcons.querySelector('.facebook').setAttribute('href', `https://www.facebook.com/sharer/sharer.php?u=${shareURL}&quote=${encodeURIComponent(itemText)}`);
+            socialIcons.querySelector('.instagram').setAttribute('href', `https://www.instagram.com/share?url=${shareURL}&text=${encodeURIComponent(itemText)}`);
+            socialIcons.querySelector('.twitter').setAttribute('href', `https://twitter.com/intent/tweet?url=${shareURL}&text=${encodeURIComponent(itemText)}`);
         });
     });
 </script>
