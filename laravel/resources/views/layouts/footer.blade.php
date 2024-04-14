@@ -259,13 +259,19 @@
 <script>
     // JavaScript для добавления ссылок на социальные сети
     document.querySelectorAll('.social-icons').forEach(socialIcons => {
-        socialIcons.addEventListener('click', () => {
-            const itemText = socialIcons.closest('.col-lg-10').querySelector('.itemText').textContent;
-            const shareURL = 'http://axaxa.club' + socialIcons.closest('.row').querySelector('.col-lg-10 .js-item-id').getAttribute('data-link');
-            socialIcons.querySelector('.facebook').setAttribute('href', `https://www.facebook.com/sharer/sharer.php?u=${shareURL}&quote=${encodeURIComponent(itemText)}`);
-            socialIcons.querySelector('.instagram').setAttribute('href', `https://www.instagram.com/share?url=${shareURL}&text=${encodeURIComponent(itemText)}`);
-            socialIcons.querySelector('.twitter').setAttribute('href', `https://twitter.com/intent/tweet?url=${shareURL}&text=${encodeURIComponent(itemText)}`);
-        });
+    socialIcons.addEventListener('click', () => {
+        const itemText = socialIcons.closest('.col-lg-10').querySelector('.itemText').textContent;
+        const shareURL = socialIcons.closest('.row').querySelector('.col-lg-10 .js-item-id').getAttribute('data-link');
+
+        const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${shareURL}&quote=${encodeURIComponent(itemText)}`;
+        const instagramURL = `https://www.instagram.com/share?url=${shareURL}&text=${encodeURIComponent(itemText)}`;
+        const twitterURL = `https://twitter.com/intent/tweet?url=${shareURL}&text=${encodeURIComponent(itemText)}`;
+
+        socialIcons.querySelector('.facebook').setAttribute('href', facebookURL);
+        socialIcons.querySelector('.instagram').setAttribute('href', instagramURL);
+        socialIcons.querySelector('.twitter').setAttribute('href', twitterURL);
     });
+});
+
 </script>
 
