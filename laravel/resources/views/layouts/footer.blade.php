@@ -253,3 +253,19 @@
 
 
 </script>
+
+<!-- Bootstrap и Font Awesome JavaScript -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    // JavaScript для добавления ссылок на социальные сети
+    document.querySelectorAll('.social-icons').forEach(socialIcons => {
+        socialIcons.addEventListener('click', () => {
+            const itemText = socialIcons.closest('.col-lg-10').querySelector('.itemText').textContent;
+            const shareURL = socialIcons.closest('.row').querySelector('.col-lg-10 .js-item-id').getAttribute('data-link');
+            socialIcons.querySelector('.facebook').setAttribute('href', `https://www.facebook.com/sharer/sharer.php?u=${shareURL}&quote=${itemText}`);
+            socialIcons.querySelector('.instagram').setAttribute('href', `https://www.instagram.com/share?url=${shareURL}&text=${itemText}`);
+            socialIcons.querySelector('.twitter').setAttribute('href', `https://twitter.com/intent/tweet?url=${shareURL}&text=${itemText}`);
+        });
+    });
+</script>
+

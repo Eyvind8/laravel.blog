@@ -1,0 +1,10 @@
+.social-icons a i {
+    font-size: 24px; /* Размер иконок */
+    color: #797979; /* Цвет иконок */
+    margin-right: 10px; /* Расстояние между иконками */
+    transition: color 0.3s; /* Плавный переход цвета */
+}
+
+.social-icons a:hover i {
+    color: #48cfad; /* Цвет иконок при наведении */
+}

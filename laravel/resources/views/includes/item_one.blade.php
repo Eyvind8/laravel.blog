@@ -47,7 +47,8 @@
            data-placement="top" title="Вподобайка:)">
             <img src="/img/heart_small-2.png" width="16px">
         </a>
-        <input class="js-item-id" type="hidden" value="{{ $item->id }}">
+        <input class="js-item-id" type="hidden" value="{{ $item->id }}"
+               data-link="/id/{{ $item['id'] }}/{{ urlSlug($item['content']) }}">
     </div>
     <br>
     <ul class="tag">
@@ -61,9 +62,17 @@
         @endforeach
     </ul>
 
+    <div class="social-icons">
+        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
     @if ($commentLink)
-        <a href="/id/{{ $item['id'] }}/{{ urlSlug($item['content']) }}" class="">
-            <em>Кометувати</em>
-        </a>
+        <div style="padding-top: 10px">
+            <a href="/id/{{ $item['id'] }}/{{ urlSlug($item['content']) }}">
+                <em>Кометувати</em>
+            </a>
+        </div>
     @endif
 </div>
