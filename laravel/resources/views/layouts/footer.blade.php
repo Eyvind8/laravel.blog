@@ -225,22 +225,22 @@
 </div>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{{ asset('js/jquery.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/hover-dropdown.js') }}"></script>
-<script defer src="{{ asset('js/jquery.flexslider.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/bxslider/jquery.bxslider.js') }}"></script>
-<script src="{{ asset('js/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('js/link-hover.js') }}"></script>
-
+<script src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/jquery.js') : asset('js/jquery.js') }}"></script>
+<script src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/bootstrap.min.js') : asset('js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/hover-dropdown.js') : asset('js/hover-dropdown.js') }}"></script>
+<script defer src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/jquery.flexslider.js') : asset('js/jquery.flexslider.js') }}"></script>
+<script type="text/javascript" src="{{ env('APP_ENV') === 'prod' ? secure_asset('assets/bxslider/jquery.bxslider.js') : asset('assets/bxslider/jquery.bxslider.js') }}"></script>
+<script src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/jquery.easing.min.js') : asset('js/jquery.easing.min.js') }}"></script>
+<script src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/link-hover.js') : asset('js/link-hover.js') }}"></script>
 
 <!--common script for all pages-->
-<script src="{{ asset('js/common-scripts.js') }}"></script>
+<script src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/common-scripts.js') : asset('js/common-scripts.js') }}"></script>
 
 <!--paginator-->
-<script src="{{ asset('js/pagination.js') }}"></script>
+<script src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/pagination.js') : asset('js/pagination.js') }}"></script>
 
-<script src="{{ asset('js/wow.min.js') }}"></script>
+<script src="{{ env('APP_ENV') === 'prod' ? secure_asset('js/wow.min.js') : asset('js/wow.min.js') }}"></script>
+
 <script>
       wow = new WOW(
         {
