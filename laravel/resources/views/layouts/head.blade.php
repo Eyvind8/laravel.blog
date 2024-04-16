@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ env('APP_ENV') === 'prod' ? secure_asset('css/flexslider.css') : asset('css/flexslider.css') }}"/>
 <link href="{{ env('APP_ENV') === 'prod' ? secure_asset('assets/bxslider/jquery.bxslider.css') : asset('assets/bxslider/jquery.bxslider.css') }}" rel="stylesheet"/>
 <link rel="stylesheet" href="{{ env('APP_ENV') === 'prod' ? secure_asset('css/animate.css') : asset('css/animate.css') }}">
-<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
