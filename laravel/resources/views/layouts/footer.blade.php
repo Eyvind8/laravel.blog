@@ -271,6 +271,5 @@
         socialIcons.querySelector('.twitter').setAttribute('href', twitterURL);
     });
 });
-
 </script>
 
