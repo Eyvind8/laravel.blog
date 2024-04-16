@@ -261,7 +261,7 @@
     document.querySelectorAll('.social-icons').forEach(socialIcons => {
     socialIcons.addEventListener('click', () => {
         const itemText = socialIcons.closest('.col-lg-10').querySelector('.itemText').textContent;
-        const shareURL = 'http://axaxa.club' + socialIcons.closest('.row').querySelector('.col-lg-10 .js-item-id').getAttribute('data-link');
+        const shareURL = 'https://axaxa.club' + socialIcons.closest('.row').querySelector('.col-lg-10 .js-item-id').getAttribute('data-link');
 
         const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${shareURL}&quote=${encodeURIComponent(itemText)}`;
         const instagramURL = `https://www.instagram.com/share?url=${shareURL}&text=${encodeURIComponent(itemText)}`;
