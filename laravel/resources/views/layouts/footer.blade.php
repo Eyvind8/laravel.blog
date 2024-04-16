@@ -255,7 +255,6 @@
 </script>
 
 <!-- Bootstrap и Font Awesome JavaScript -->
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script>
     // JavaScript для добавления ссылок на социальные сети
     document.querySelectorAll('.social-icons').forEach(socialIcons => {
