@@ -1,3 +1,10 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Смішні анекдоти, веселі історії та розважальний контент на сайті axaxa.club. Забудьте про сумні будні з нашими гумористичними матеріалами.">
+<meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
+<link rel="shortcut icon" href="img/favicon.png">
+
+<title>Axaxa.club - Смішні жарти та анекдоти</title>
+
 <!-- Bootstrap core CSS -->
 <link href="{{ env('APP_ENV') === 'prod' ? secure_asset('css/bootstrap.min.css') : asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ env('APP_ENV') === 'prod' ? secure_asset('css/theme.css') : asset('css/theme.css') }}" rel="stylesheet">
