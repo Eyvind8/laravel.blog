@@ -63,6 +63,7 @@
     </ul>
 
     <div class="social-icons">
+        <a href="#" class="telegram"><i class="fab fa-telegram"></i></a>
         <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
         <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>

@@ -262,10 +262,12 @@
         const itemText = socialIcons.closest('.col-lg-10').querySelector('.itemText').textContent;
         const shareURL = 'https://axaxa.club' + socialIcons.closest('.row').querySelector('.col-lg-10 .js-item-id').getAttribute('data-link');
 
-        const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${shareURL}&quote=${encodeURIComponent(itemText)}`;
-        const instagramURL = `https://www.instagram.com/share?url=${shareURL}&text=${encodeURIComponent(itemText)}`;
-        const twitterURL = `https://twitter.com/intent/tweet?url=${shareURL}&text=${encodeURIComponent(itemText)}`;
+        const telegramURL = `https://t.me/share/url?url=${shareURL}&text=${encodeURIComponent(itemText)}&utm_source=share2`;
+        const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${shareURL}&quote=${encodeURIComponent(itemText)}&utm_source=share2`;
+        const instagramURL = `https://www.instagram.com/share?url=${shareURL}&text=${encodeURIComponent(itemText)}&utm_source=share2`;
+        const twitterURL = `https://twitter.com/intent/tweet?url=${shareURL}&text=${encodeURIComponent(itemText)}&utm_source=share2`;
 
+        socialIcons.querySelector('.telegram').setAttribute('href', telegramURL);
         socialIcons.querySelector('.facebook').setAttribute('href', facebookURL);
         socialIcons.querySelector('.instagram').setAttribute('href', instagramURL);
         socialIcons.querySelector('.twitter').setAttribute('href', twitterURL);
