@@ -9,7 +9,7 @@
     <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
 
 @else
-    <?php $content = preg_replace('/[^\p{L}\p{N}\s]+/u', '', $item['content']) ?>
+    <?php $content = trim(preg_replace('/[^\p{L}\p{N}\s]+/u', '', str_replace(["\r", "\n"], '', $item['content']))) ?>
 
     <title>{{ mb_substr($content, 0, 60, 'UTF-8') }}</title>
     <meta name="description" content="{{ $content  }}">
