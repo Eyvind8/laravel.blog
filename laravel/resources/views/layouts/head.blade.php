@@ -40,7 +40,7 @@
     {{--    <meta name="twitter:image" content="https://s.dou.ua/img/announces/portrait_cover-4.png">--}}
 
 @elseif(request()->has('tag'))
-    <title>Axaxa.club - Смішні жарти та анекдоти</title>
+    <title>Тема {{ $tag->name }}</title>
     <meta name="description"
           content="На сайті Axaxa.club зібрані найсмішніші анекдоти, кумедні історії та жарти про різні теми, включаючи і тему '{{ $tag->name }}'. Завітайте зараз і насолоджуйтесь гарним настроєм!">
     <meta name="keywords" content="жарти, анекдоти, гумор, {{ $tag->name }}, смішні історії, Axaxa.club">
