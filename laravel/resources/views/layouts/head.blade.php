@@ -48,7 +48,6 @@
     <title>Axaxa.club - Смішні жарти та анекдоти</title>
     <meta name="description"
           content="Смішні анекдоти, веселі історії та розважальний контент на сайті axaxa.club. Забудьте про сумні будні з нашими гумористичними матеріалами.">
-    <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
     <meta name="keywords" content="жарти, анекдоти, гумор, {{ $tag->name }}, смішні історії, Axaxa.club">
 @endif
 
