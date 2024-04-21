@@ -2,24 +2,26 @@
 {{--<link rel="shortcut icon" href="img/favicon.png">--}}
 
 
-@if (strpos(request()->url(), '/id/') === false)
-    <title>Axaxa.club - Смішні жарти та анекдоти</title>
-    <meta name="description"
-          content="Смішні анекдоти, веселі історії та розважальний контент на сайті axaxa.club. Забудьте про сумні будні з нашими гумористичними матеріалами.">
-    <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
-
-@else
-    <?php $content = trim(preg_replace('/[^\p{L}\p{N}\s]+/u', '', str_replace(["\r", "\n"], '', $item['content']))) ?>
+@if (strpos(request()->url(), '/id/') !== false)
+        <?php
+        $content = trim(preg_replace('/[^\p{L}\p{N}\s]+/u', '', str_replace(["\r", "\n"], '', $item['content'])));
+        $words = explode(' ', $content);
+        $unique_words = array_unique($words);
+        $filtered_words = array_filter($unique_words, function ($word) {
+            return mb_strlen($word, 'UTF-8') > 2;
+        });
+        $unique_content = implode(' ', $filtered_words);
+        ?>
 
     <title>{{ mb_substr($content, 0, 60, 'UTF-8') }}</title>
-    <meta name="description" content="{{ $content  }}">
-    <meta name="keywords" content="жарт, {{ implode(', ', explode(' ', $content)) }}">
-
+    <meta name="description" content="{{ $unique_content }}">
+    <meta name="keywords" content="жарт, {{ implode(', ', explode(' ', $unique_content)) }}">
 
     <meta property="og:title" content="{{ Str::ucfirst($item['content']) }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
     <meta property="og:site_name" content="Axaxa.club">
+    <meta property="og:locale" content="uk_UA">
     {{--    <meta property="og:image" content="https://s.dou.ua/img/announces/portrait_cover-4.png">--}}
 
     {{--    <meta property="og:image:width" content="1200">--}}
@@ -37,6 +39,17 @@
     <meta name="twitter:title" content="{{ Str::ucfirst($item['content']) }}">
     {{--    <meta name="twitter:image" content="https://s.dou.ua/img/announces/portrait_cover-4.png">--}}
 
+@elseif(request()->has('tag'))
+    <title>Axaxa.club - Смішні жарти та анекдоти</title>
+    <meta name="description"
+          content="На сайті Axaxa.club зібрані найсмішніші анекдоти, кумедні історії та жарти про різні теми, включаючи і тему '{{ $tag->name }}'. Завітайте зараз і насолоджуйтесь гарним настроєм!">
+    <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
+@else
+    <title>Axaxa.club - Смішні жарти та анекдоти</title>
+    <meta name="description"
+          content="Смішні анекдоти, веселі історії та розважальний контент на сайті axaxa.club. Забудьте про сумні будні з нашими гумористичними матеріалами.">
+    <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
+    <meta name="keywords" content="жарти, анекдоти, гумор, {{ $tag->name }}, смішні історії, Axaxa.club">
 @endif
 
 <!-- Bootstrap core CSS -->

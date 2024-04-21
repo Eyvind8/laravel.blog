@@ -19,7 +19,8 @@ class IndexController extends Controller
      */
     public function index(
         FormRequest     $request,
-        ItemsRepository $itemsRepository
+        ItemsRepository $itemsRepository,
+        TagRepository $tagRepository
     )
     {
         /**
@@ -64,7 +65,9 @@ class IndexController extends Controller
             $item->setTags($tags);
         }
 
-        return view('items/index')->with('items', $items);
+        $tag = $tagRepository->get(request()->get('tag')) ?? null;
+
+        return view('items/index')->with(['items' => $items, 'tag' => $tag]);
     }
 
     /**
