@@ -2,9 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                <h1>
+                <h3>
                     наші контакти
-                </h1>
+                </h3>
                 <address>
 {{--                    <p>--}}
 {{--                        <i class="fa fa-home pr-10">--}}
@@ -35,9 +35,9 @@
                 </address>
             </div>
 {{--            <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">--}}
-{{--                <h1>--}}
+{{--                <h3>--}}
 {{--                    latest tweet--}}
-{{--                </h1>--}}
+{{--                </h3>--}}
 {{--                <div id="owl-slide">--}}
 {{--                    <div class="tweet-box">--}}
 {{--                        <i class="fa fa-twitter">--}}
@@ -85,9 +85,9 @@
 {{--            </div>--}}
 {{--            <div class="col-lg-3 col-sm-3">--}}
 {{--                <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">--}}
-{{--                    <h1>--}}
+{{--                    <h3>--}}
 {{--                        Our Company--}}
-{{--                    </h1>--}}
+{{--                    </h3>--}}
 {{--                    <ul class="page-footer-list">--}}
 
 {{--                        <li>--}}
@@ -139,9 +139,9 @@
             <div class="col-lg-3 col-sm-3">
 
                 <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
-                    <h1>
+                    <h3>
                         Смішність на вибір
-                    </h1>
+                    </h3>
                     <p>
                         Ваш особистий антидепресант!
                         Тут кожен жарт – наче чарівна таблетка щастя, готова миттєво підняти ваш настрій
@@ -151,9 +151,9 @@
             <div class="col-lg-3 col-sm-3">
 
                 <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
-                    <h1>
+                    <h3>
                         Веселий контент щодня
-                    </h1>
+                    </h3>
                     <p>
                         Забудьте про сірі будні – у нас завжди світло і весело!
                         Кожен текст – це крок у світ гарного настрою
@@ -163,9 +163,9 @@
             <div class="col-lg-3 col-sm-3">
 
                 <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
-                    <h1>
+                    <h3>
                         Настрій гарантовано
-                    </h1>
+                    </h3>
                     <p>
                         Ласкаво просимо на наш сайт, де гумор – наше головне завдання!
                         Тут кожен жарт – наче чарівна таблетка щастя, готова миттєво підняти ваш настрій
@@ -183,15 +183,15 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-6 pull-right">
-                <ul class="social-link-footer list-unstyled">
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="https://plus.google.com/share?url=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faxaxa.club&text=Заголовок%20сторінки%20" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="skype:axaxa.club?chat" target="_blank"><i class="fa fa-skype"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="https://github.com/жарт-club" target="_blank"><i class="fa fa-github"></i></a></li>
-                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="https://www.youtube.com/share?v=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                </ul>
+{{--                <ul class="social-link-footer list-unstyled">--}}
+{{--                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-facebook"></i></a></li>--}}
+{{--                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="https://plus.google.com/share?url=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-google-plus"></i></a></li>--}}
+{{--                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-linkedin"></i></a></li>--}}
+{{--                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faxaxa.club&text=Заголовок%20сторінки%20" target="_blank"><i class="fa fa-twitter"></i></a></li>--}}
+{{--                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="skype:axaxa.club?chat" target="_blank"><i class="fa fa-skype"></i></a></li>--}}
+{{--                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="https://github.com/жарт-club" target="_blank"><i class="fa fa-github"></i></a></li>--}}
+{{--                    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="https://www.youtube.com/share?v=https%3A%2F%2Faxaxa.club" target="_blank"><i class="fa fa-youtube"></i></a></li>--}}
+{{--                </ul>--}}
 
 
             </div>
