@@ -43,12 +43,12 @@
     <title>Axaxa.club - Смішні жарти та анекдоти</title>
     <meta name="description"
           content="На сайті Axaxa.club зібрані найсмішніші анекдоти, кумедні історії та жарти про різні теми, включаючи і тему '{{ $tag->name }}'. Завітайте зараз і насолоджуйтесь гарним настроєм!">
-    <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
+    <meta name="keywords" content="жарти, анекдоти, гумор, {{ $tag->name }}, смішні історії, Axaxa.club">
 @else
     <title>Axaxa.club - Смішні жарти та анекдоти</title>
     <meta name="description"
           content="Смішні анекдоти, веселі історії та розважальний контент на сайті axaxa.club. Забудьте про сумні будні з нашими гумористичними матеріалами.">
-    <meta name="keywords" content="жарти, анекдоти, гумор, {{ $tag->name }}, смішні історії, Axaxa.club">
+    <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
 @endif
 
 <!-- Bootstrap core CSS -->
