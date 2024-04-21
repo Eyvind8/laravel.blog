@@ -9,9 +9,11 @@
     <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
 
 @else
-    <title>{{ mb_substr($item['content'], 0, 60, 'UTF-8') }}</title>
-    <meta name="description" content="{{ Str::ucfirst($item['content']) }}">
-    <meta name="keywords" content="жарт, {{ implode(', ', explode(' ', preg_replace('/[^\p{L}\p{N}\s]/u', '', $item['content']))) }}">
+    <?php $content = preg_replace('/[^\p{L}\p{N}\s]+/u', '', $item['content']) ?>
+
+    <title>{{ mb_substr($content, 0, 60, 'UTF-8') }}</title>
+    <meta name="description" content="{{ $content  }}">
+    <meta name="keywords" content="жарт, {{ implode(', ', explode(' ', $content)) }}">
 
 
     <meta property="og:title" content="{{ Str::ucfirst($item['content']) }}">
