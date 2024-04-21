@@ -1,33 +1,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-      content="Смішні анекдоти, веселі історії та розважальний контент на сайті axaxa.club. Забудьте про сумні будні з нашими гумористичними матеріалами.">
-<meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
-<link rel="shortcut icon" href="img/favicon.png">
+{{--<link rel="shortcut icon" href="img/favicon.png">--}}
 
-<title>Axaxa.club - Смішні жарти та анекдоти</title>
 
-@if (strpos(request()->url(), '/id/') !== false)
+@if (strpos(request()->url(), '/id/') === false)
+    <title>Axaxa.club - Смішні жарти та анекдоти</title>
+    <meta name="description"
+          content="Смішні анекдоти, веселі історії та розважальний контент на сайті axaxa.club. Забудьте про сумні будні з нашими гумористичними матеріалами.">
+    <meta name="keywords" content="гумор, жарт, розваги, веселі історії, анекдоти">
+
+@else
+    <title>{{ mb_substr($item['content'], 0, 60, 'UTF-8') }}</title>
+    <meta name="description" content="{{ Str::ucfirst($item['content']) }}">
+    <meta name="keywords" content="жарт, {{ implode(', ', explode(' ', preg_replace('/[^\p{L}\p{N}\s]/u', '', $item['content']))) }}">
+
 
     <meta property="og:title" content="{{ Str::ucfirst($item['content']) }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
     <meta property="og:site_name" content="Axaxa.club">
-{{--    <meta property="og:image" content="https://s.dou.ua/img/announces/portrait_cover-4.png">--}}
+    {{--    <meta property="og:image" content="https://s.dou.ua/img/announces/portrait_cover-4.png">--}}
 
-{{--    <meta property="og:image:width" content="1200">--}}
-{{--    <meta property="og:image:height" content="630">--}}
+    {{--    <meta property="og:image:width" content="1200">--}}
+    {{--    <meta property="og:image:height" content="630">--}}
 
 
-  {{--  <meta property="og:description"
-          content="Цього року зрівнялася кількість айтівців в продукті та аутсорсі: їх по 40%, попри війну 66% фахівців заробляють більше, ніж витрачають, а 8% встигають працювати на кількох роботах. Представляємо портрет айтівця 2023.">
-    <meta name="twitter:description"
-          content="Цього року зрівнялася кількість айтівців в продукті та аутсорсі: їх по 40%, попри війну 66% фахівців заробляють більше, ніж витрачають, а 8% встигають працювати на кількох роботах. Представляємо портрет айтівця 2023.">
---}}
-{{--    <meta name="twitter:card" content="summary_large_image">--}}
-{{--    <meta name="twitter:site" content="@doucommunity">--}}
+    {{--  <meta property="og:description"
+            content="Цього року зрівнялася кількість айтівців в продукті та аутсорсі: їх по 40%, попри війну 66% фахівців заробляють більше, ніж витрачають, а 8% встигають працювати на кількох роботах. Представляємо портрет айтівця 2023.">
+      <meta name="twitter:description"
+            content="Цього року зрівнялася кількість айтівців в продукті та аутсорсі: їх по 40%, попри війну 66% фахівців заробляють більше, ніж витрачають, а 8% встигають працювати на кількох роботах. Представляємо портрет айтівця 2023.">
+  --}}
+    {{--    <meta name="twitter:card" content="summary_large_image">--}}
+    {{--    <meta name="twitter:site" content="@doucommunity">--}}
     <meta name="twitter:url" content="{{ request()->url() }}">
     <meta name="twitter:title" content="{{ Str::ucfirst($item['content']) }}">
-{{--    <meta name="twitter:image" content="https://s.dou.ua/img/announces/portrait_cover-4.png">--}}
+    {{--    <meta name="twitter:image" content="https://s.dou.ua/img/announces/portrait_cover-4.png">--}}
 
 @endif
 
