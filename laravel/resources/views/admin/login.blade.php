@@ -15,7 +15,7 @@
                 <div class="col-md-6 col-sm-6 col-12 login-box-form p-4">
                     <h3 class="mb-2">Login</h3>
                     <small class="text-muted bc-description">Sign in with your credentials</small>
-                    <form method="POST" action="{{ route('admin.login') }}" class="mt-2">
+                    <form method="POST" action="/admin/login" class="mt-2">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>

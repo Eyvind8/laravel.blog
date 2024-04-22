@@ -45,7 +45,7 @@
         </a>
         <a href="#" class="likeButton tooltips" onclick="toggleLike({{ $item->id }}); return false;"
            data-placement="top" title="Вподобайка:)">
-            <img src="/img/heart_small-2.png" width="16px">
+            <img src="/img/heart_small-2.png" alt="like" width="16px">
         </a>
         <input class="js-item-id" type="hidden" value="{{ $item->id }}"
                data-link="/id/{{ $item['id'] }}/{{ urlSlug($item['content']) }}">
