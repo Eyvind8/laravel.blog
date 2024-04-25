@@ -301,110 +301,61 @@ class Filter
      * @param string $type
      * @return Builder
      */
+    /**
+     * @param Builder $builder
+     * @param $field
+     * @param string $type
+     * @return Builder
+     */
     private function getFieldExpression(Builder $builder, $field, string $type): Builder
     {
-        if ($type === self::GROUP_EXPRESSION_AND) {
-            if ($field['expression'] === self::FIELD_EXPRESSION_EQ) {
-                return $builder->where(
-                    $field['name'], '=', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
+        $method = $type === self::GROUP_EXPRESSION_AND ? 'where' : 'orWhere';
 
-            if ($field['expression'] === self::FIELD_EXPRESSION_NEQ) {
-                return $builder->where(
-                    $field['name'], '!=', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
+        $fieldName = $field['name'];
+        $fieldType = $field['dataType'] ?? null;
+        $fieldExpression = $field['expression'];
+        $fieldValue = $this->prepareValue($field['value'], $fieldExpression, $fieldType);
 
-            if ($field['expression'] === self::FIELD_EXPRESSION_GT) {
-                return $builder->where(
-                    $field['name'], '>', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_GTE) {
-                return $builder->where(
-                    $field['name'], '>=', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_LT) {
-                return $builder->where(
-                    $field['name'], '<', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_LTE) {
-                return $builder->where(
-                    $field['name'], '<=', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_LIKE) {
-                return $builder->where(
-                    $field['name'], 'like', '%' . $this->prepareValue($field['value'] . '%', $field['dataType'] ?? null)
-                );
-            }
+        switch ($field['expression']) {
+            case self::FIELD_EXPRESSION_EQ:
+                return $builder->$method($fieldName, '=', $fieldValue);
+            case self::FIELD_EXPRESSION_NEQ:
+                return $builder->$method($fieldName, '!=', $fieldValue);
+            case self::FIELD_EXPRESSION_GT:
+                return $builder->$method($fieldName, '>', $fieldValue);
+            case self::FIELD_EXPRESSION_GTE:
+                return $builder->$method($fieldName, '>=', $fieldValue);
+            case self::FIELD_EXPRESSION_LT:
+                return $builder->$method($fieldName, '<', $fieldValue);
+            case self::FIELD_EXPRESSION_LTE:
+                return $builder->$method($fieldName, '<=', $fieldValue);
+            case self::FIELD_EXPRESSION_LIKE:
+                return $builder->$method($fieldName, 'like', '%' . $fieldValue . '%');
+            default:
+                return $builder;
         }
-
-        if ($type === self::GROUP_EXPRESSION_OR) {
-            if ($field['expression'] === self::FIELD_EXPRESSION_EQ) {
-                return $builder->orWhere(
-                    $field['name'], '=', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_NEQ) {
-                return $builder->orWhere(
-                    $field['name'], '!=', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_GT) {
-                return $builder->orWhere(
-                    $field['name'], '>', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_GTE) {
-                return $builder->orWhere(
-                    $field['name'], '>=', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_LT) {
-                return $builder->orWhere(
-                    $field['name'], '<', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_LTE) {
-                return $builder->orWhere(
-                    $field['name'], '<=', $this->prepareValue($field['value'], $field['dataType'] ?? null)
-                );
-            }
-
-            if ($field['expression'] === self::FIELD_EXPRESSION_LIKE) {
-                return $builder->orWhere(
-                    $field['name'], 'like', '%' . $this->prepareValue($field['value'] . '%', $field['dataType'] ?? null)
-                );
-            }
-        }
-
-        return $builder;
     }
+
 
     /**
      * @param $value
+     * @param $fieldExpression
      * @param string|null $type
-     * @return mixed
+     * @return Carbon|false|mixed|void
      */
-    private function prepareValue($value, ?string $type)
+    private function prepareValue($value, $fieldExpression, ?string $type)
     {
-        if ($type === self::FIELD_TYPE_DATE) {
-            return Carbon::createFromFormat('Y-m-d', $value);
+        if ($type !== self::FIELD_TYPE_DATE) {
+            return $value;
         }
 
-        return $value;
+        switch ($fieldExpression) {
+            case self::FIELD_EXPRESSION_GTE:
+                return Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
+            case self::FIELD_EXPRESSION_LTE:
+                return Carbon::createFromFormat('Y-m-d', $value)->endOfDay();
+            default:
+                return Carbon::createFromFormat('Y-m-d', $value);
+        }
     }
 }
